@@ -1,8 +1,26 @@
 baseURL = "https://junbowang.com"
 title = "Junbo Wang"
 theme = "PaperMod"
+paginate = 10
+enableRobotsTXT = true
+
+[params]
+  description = ""
+  author = "Junbo Wang"
+  defaultTheme = "auto"
+  ShowReadingTime = false
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = false
+  ShowCodeCopyButtons = false
+  ShowToc = false
+  disableHLJS = true
+
+  [params.cover]
+    linkFullImages = false
+    responsiveImages = false
 
 [[menu.main]]
   name = "CV"
-  url = "/cv/"
+  url = "https://www.dropbox.com/scl/fi/ml05n0g7odob3bhlw4yz4/CV.pdf?rlkey=7rhs4ofz7k26v1vkexqjfiow0&dl=0"
   weight = 1
