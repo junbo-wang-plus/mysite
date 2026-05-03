@@ -1,0 +1,8 @@
+baseURL = "https://junbowang.com"
+title = "Jun Wang"
+theme = "PaperMod"
+
+[[menu.main]]
+  name = "CV"
+  url = "/cv/"
+  weight = 1
