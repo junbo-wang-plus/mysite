@@ -3,7 +3,7 @@ title: "Tobias's tab"
 date: 2026-04-25
 draft: false
 cover:
-  image: "coins.jpg"
+  image: "coins.png"
   alt: "no Norwegian currency in sight"
 ---
 

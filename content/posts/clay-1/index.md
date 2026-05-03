@@ -1,15 +1,9 @@
 ---
-title: "Clay 1"
-date: 2026-05-03
-draft: false
----
-
----
 title: “Clay log 1”
 date: 2026-04-13
 draft: false
 cover:
-  image: “IMG”_1288.png
+  image: "IMG_1288.png"
   alt: ""
 ---
 Made at Cone-7. Retrieved on April 13th, 2026.
