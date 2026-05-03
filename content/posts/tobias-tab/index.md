@@ -1,13 +1,13 @@
 ---
 title: "Tobias's tab"
-date: 2026-05-03
+date: 2026-04-25
 draft: false
 cover:
-  image: "godt_brod_logo.jpg"
-  alt: ""
+  image: "coins.jpg"
+  alt: "no Norwegian currency in sight"
 ---
 
-buns (60 NOK)
-SULA ticket (220 NOK)
-
-![good bread](godt_brod_logo.jpg)
+- **25.04.26** SULA ticket (220 NOK)
+![a good concert](jungelen-sula.jpg)
+- **07.04.26** buns (60 NOK)
+![the almond bun from good bread was delicious](godt_brod_logo.jpg)
