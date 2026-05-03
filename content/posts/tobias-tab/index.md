@@ -4,7 +4,6 @@ date: 2026-04-25
 draft: false
 cover:
   image: "coins.png"
-  alt: "no Norwegian currency in sight"
 ---
 
 - **25.04.26** SULA ticket (220 NOK)
