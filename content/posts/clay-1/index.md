@@ -3,11 +3,11 @@ title: "Clay log 1"
 date: 2026-04-13
 draft: false
 cover:
-  image: "IMG_1288.png"
+  image: "IMG_1288.jpeg"
 ---
 Made at Cone-7. Retrieved on April 13th, 2026.
 # Finished pieces
-![LOOK AT THEM](IMG_1289.png)
+![LOOK AT THEM](IMG_1289.jpeg)
 ![This one was for **M**eghan **B**rown (get it?)](IMG_1274.jpeg)
 ![now my pepper grinder base](IMG_1275.jpeg)
 ![fav 1](IMG_1276.jpeg)

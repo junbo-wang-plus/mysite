@@ -3,7 +3,7 @@ title: "Tobias' tab"
 date: 2026-04-25
 draft: false
 cover:
-  image: "coins.png"
+  image: "coins.jpeg"
 ---
 
 - **25.04.26** SULA ticket (220 NOK)
