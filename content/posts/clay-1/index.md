@@ -8,7 +8,7 @@ cover:
 Made at Cone-7. Retrieved on April 13th, 2026.
 # Finished pieces
 ![LOOK AT THEM](IMG_1289.png)
-![This one was for Meghan Brown (get it?)](IMG_1274.jpeg)
+![This one was for **M**eghan **B**rown (get it?)](IMG_1274.jpeg)
 ![now my pepper grinder base](IMG_1275.jpeg)
 ![fav 1](IMG_1276.jpeg)
 ![fav 2, accidental Harry Potter reference](IMG_1277.jpeg)
