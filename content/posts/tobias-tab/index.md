@@ -5,7 +5,7 @@ draft: false
 cover:
   image: "coins.jpeg"
 ---
-
+# in which i keep track of how much money i owe mr. tobias eiksund
 - **25.04.26** SULA ticket (220 NOK)
 ![a good concert](jungelen-sula.jpg)
 - **07.04.26** buns (60 NOK)
