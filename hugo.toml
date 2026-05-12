@@ -24,3 +24,18 @@ enableRobotsTXT = true
   name = "CV"
   url = "https://www.dropbox.com/scl/fi/p98r4pefq2setgxfhjt1a/CV.pdf?rlkey=8bn6sshdhi9acre3lm35u3248&dl=0"
   weight = 1
+
+[[menu.main]]
+  name = "LinkedIn"
+  url = "https://www.linkedin.com/in/your-handle"
+  weight = 2
+
+[[menu.main]]
+  name = "GitHub"
+  url = "https://github.com/your-handle"
+  weight = 3
+
+[[menu.main]]
+  name = "Instagram"
+  url = "https://www.instagram.com/your-handle"
+  weight = 4
