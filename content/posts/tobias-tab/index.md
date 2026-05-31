@@ -1,5 +1,5 @@
 ---
-title: "Tobias' tab"
+title: "Tobias's tab"
 date: 2026-04-25
 draft: false
 cover:
