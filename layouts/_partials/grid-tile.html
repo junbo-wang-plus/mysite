@@ -1,0 +1,38 @@
+{{- /*
+  One square tile in the photo grid.
+  Thumbnail source, in order of preference:
+    1. front matter `cover.image` (file in the post folder, or a full URL)
+    2. the first image used in the post's markdown
+    3. any image in the post folder
+*/ -}}
+{{- $img := "" }}
+{{- $src := "" }}
+{{- with .Params.cover.image }}
+  {{- with $.Resources.GetMatch . }}{{ $img = . }}{{ else }}{{ $src = . }}{{ end }}
+{{- end }}
+{{- if and (not $img) (not $src) }}
+  {{- with index (findRESubmatch `!\[[^\]]*\]\(<?([^)>\s]+)>?` .RawContent 1) 0 }}
+    {{- $first := index . 1 }}
+    {{- with $.Resources.GetMatch $first }}{{ $img = . }}{{ else }}{{ $src = $first }}{{ end }}
+  {{- end }}
+{{- end }}
+{{- if and (not $img) (not $src) }}
+  {{- with .Resources.ByType "image" }}{{ $img = index . 0 }}{{ end }}
+{{- end }}
+{{- if and $img (ne $img.MediaType.SubType "svg") }}
+  {{- $thumb := $img.Fill "800x800 Smart q80" }}
+  {{- $src = $thumb.RelPermalink }}
+{{- else if $img }}
+  {{- $src = $img.RelPermalink }}
+{{- end }}
+
+{{- $title := .Title | plainify }}
+<a class="tile{{ if $title }} has-title{{ end }}{{ if not $src }} no-image{{ end }}" href="{{ .Permalink }}"
+  aria-label="{{ $title | default (.Date.Format "2 January 2006") }}">
+  {{- with $src }}
+  <img src="{{ . }}" alt="{{ $title }}" loading="lazy" decoding="async">
+  {{- end }}
+  {{- with $title }}
+  <span class="tile-title">{{ . }}</span>
+  {{- end }}
+</a>

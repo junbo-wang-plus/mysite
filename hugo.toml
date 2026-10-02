@@ -1,8 +1,10 @@
 baseURL = "https://junbowang.com"
 title = "Junbo Wang"
 theme = "PaperMod"
-paginate = 10
 enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 12
 
 [params]
   description = ""

@@ -1,0 +1,67 @@
+/* Photo grid on the home page and post lists (see layouts/list.html). */
+
+/* Give the grid more room than PaperMod's 720px reading width. */
+.main:has(.photo-grid) {
+    max-width: calc(960px + var(--gap) * 2);
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+}
+
+.tile {
+    position: relative;
+    display: block;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--code-bg);
+}
+
+.tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    transition: transform 0.3s ease;
+}
+
+.tile:hover img {
+    transform: scale(1.03);
+}
+
+/* Titled posts: text overlaid at the bottom of the picture. */
+.tile-title {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 40px 14px 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Post without any image: show the title on a plain square. */
+.tile.no-image .tile-title {
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    color: var(--primary);
+    background: none;
+    text-shadow: none;
+}
+
+/* Mobile: one photo per row. */
+@media screen and (max-width: 600px) {
+    .photo-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .tile-title {
+        font-size: 18px;
+    }
+}
