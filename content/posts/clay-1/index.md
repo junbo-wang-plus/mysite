@@ -5,23 +5,13 @@ draft: false
 cover:
   image: "IMG_1288.jpeg"
 ---
-Made at Cone-7. Retrieved on April 13th, 2026.
-# Finished pieces
-![LOOK AT THEM](IMG_1289.jpeg)
-![This one was for **M**eghan **B**rown (get it?)](IMG_1274.jpeg)
-![now my pepper grinder base](IMG_1275.jpeg)
-![fav 1](IMG_1276.jpeg)
-![fav 2, accidental Harry Potter reference](IMG_1277.jpeg)
-![accidental flower pot](IMG_1278.jpeg)
-![meh](IMG_1279.jpeg)
-![living a happy life with Fatima now](IMG_1280.jpeg)
-![fav 3](IMG_1282.jpeg)
-# Greenware, bisqueware, and glazed ware
-![](IMG_0764.jpeg)
-![](IMG_0765.jpeg)
-![](IMG_0766.jpeg)
-![](IMG_0767.jpeg)
-![](IMG_0814.jpeg)
-![](IMG_0816.jpeg)
-![](IMG_0902.jpeg)
-![](IMG_1016.jpeg)
+Made at Cone-7 in April 2026.
+![](IMG_1289.jpeg)
+![](IMG_1274.jpeg)
+![](IMG_1275.jpeg)
+![](IMG_1276.jpeg)
+![](IMG_1277.jpeg)
+![](IMG_1278.jpeg)
+![](IMG_1279.jpeg)
+![](IMG_1280.jpeg)
+![](IMG_1282.jpeg)
