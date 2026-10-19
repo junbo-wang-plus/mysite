@@ -5,10 +5,14 @@ draft: false
 cover:
   image: "pigtales.jpg"
 ---
-# Klara and the Sun
-[Goodreads](https://www.goodreads.com/book/show/54120408)
-A fully conscientious robot with the mind of a child and yet superhuman abilities being sold as an Artificial Friend for children. I love that you could not really tell what Ishiguro intended the message of the story to be. Most of the story revolves around how a cognitively unevenly (or compared to humans) developed robot sees and learns about the world. The choice that the AFs are fully equipped top-of-the-spec shells for near zero understanding of the human world makes it less a story about robots but one about how humans always end up disappointing each other and how we always eventually grow up and move on. All Klara had left in the end was the benevolent Sun. 
-	
-### Machines like Me
-[Goodreads](https://www.goodreads.com/book/show/42086795)
-Another robot sold as a companion. This time the story puts more focus on alternative history in the late 90s England. As part of two dozens of robots newly developed and sold to humans, Adam, like Klara, is learning about the human world fresh but is already equipped with incomprehensible abilities. The speed at which he grows in cognition is astonishing. He learns about the world and combs through his thought in the background when he's charging. Stock market is too easy for him. He churns out haikus to express his love to his owner. He jokes about breaking his owner’s arm if he tries to shut him off. Yet he is loyal. But to what? At the beginning, it seems like he is following orders and just being a housechore robot. However, cracks start to show up. He follows orders but he has his own agenda too. Eventually the gap between his and his owners' flawed morals grows so huge that they become incomprehesible to each other so he betrays them and they betray him in turn. 
+# Husbands
+![](Husbands.jpg)
+[Letterboxd](https://letterboxd.com/film/husbands/)
+
+I saw Husbands by John Cassavetes at Bergen Filmklubb. Excruciating is the only word I have to describe it. You follow three middle-aged white collar bros in New York getting shitfaced after attending a bro’s funeral. Recognizing their mortality, they decide to go on the ultimate bro’s trip. Basketball. Singing party with senior citizens. Beating up the wife and terrorizing the family. Trying to puke in the toilet but your bro is talking too much. Flying to London with no luggage. Losing 200 pounds in one game at a London casino. Trying to hook up with women but all you are doing is either crying in bed together or attempting (roleplaying?) rape. The ultimate frat bro movie but with middle-aged guys.
+
+# Pig tales
+![](pigtales.jpg)
+[Goodreads](https://www.goodreads.com/book/show/767124)
+
+A Parisian woman working at a cosmetics store who got the upper hand in her career because of her figure slowly metamorphosing into a pig. I thought the story would ease into the transformation so I was floored when she was basically a full pig before halfway of the book. Everything that happened since then can only be described as a relentless nightmare. The closest analogies I can think of are The Onion’s old YouTube series Jim Haggerty Porks the USA, the Vegetarian, and Eraserhead. I was pleasantly surprised this was first published in 2000.
