@@ -1,11 +1,3 @@
 body {
-    font-family: 'Adamina', Georgia, serif;
-}
-
-/* Adamina has a single (regular) weight; keep titles at it rather than faux bold. */
-h1, h2, h3, h4, h5, h6,
-.logo a,
-.menu .active,
-.tile-title {
-    font-weight: 400;
+    font-family: 'Brawler', Georgia, serif;
 }
