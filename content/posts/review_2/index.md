@@ -3,7 +3,8 @@ title: "Two excruciating works"
 date: 2026-10-17
 draft: false
 cover:
-  image: "pigtales.jpg"
+  image: "pigtales.jpg"  # still used for link previews
+  fan: true  # grid thumbnail = the fan below
 fan: ["Husbands.jpg", "pigtales.jpg"]
 ---
 # [Husbands](https://letterboxd.com/film/husbands/)

@@ -38,6 +38,32 @@
     transform: scale(1.03);
 }
 
+/* Tilted cover pair as the thumbnail (front matter `cover: {fan: true}`),
+   a small copy of the .cover-fan block at the top of the post. */
+.tile-fan {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7%;
+    padding-bottom: 12%;
+    background: var(--panel, var(--code-bg));
+}
+
+.tile .tile-fan img {
+    width: 34%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    border-radius: 3px;
+    box-shadow: 0 14px 28px -16px rgba(22, 24, 29, .6);
+}
+
+.tile .tile-fan img:nth-child(odd) { transform: rotate(-3deg); }
+.tile .tile-fan img:nth-child(even) { transform: rotate(3deg); }
+.tile:hover .tile-fan img:nth-child(odd) { transform: rotate(-6deg) translateX(-6%); }
+.tile:hover .tile-fan img:nth-child(even) { transform: rotate(5deg) translateX(6%); }
+
 /* Titled posts: frosted band at the bottom of the picture.
    The blur fades in upward via a mask, so there is no hard edge. */
 .tile-blur {

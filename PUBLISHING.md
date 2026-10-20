@@ -25,6 +25,21 @@ cover:
 ![caption](IMG_1289.jpeg)
 ```
 
+Review-style posts can show several covers as a tilted "fan" at the top of the post,
+and optionally use that fan as the grid thumbnail too:
+
+```markdown
+---
+title: "Two books about AI"
+date: 2026-10-17
+draft: false
+cover:
+  image: "MachinesLikeMe.jpg"   # still used for link previews (WhatsApp, iMessage, ...)
+  fan: true                     # grid thumbnail = the fan below; delete to use cover.image
+fan: ["Klara_and_the_Sun.png", "MachinesLikeMe.jpg"]   # files in the post folder
+---
+```
+
 Run `./publish.sh`. Every post folder that doesn't exist on GitHub yet is pushed to `main`
 and the site rebuilds in about a minute. Existing folders are skipped; to push edits to one,
 run `./publish.sh clay-2`.

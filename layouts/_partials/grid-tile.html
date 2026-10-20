@@ -4,7 +4,17 @@
     1. front matter `cover.image` (file in the post folder, or a full URL)
     2. the first image used in the post's markdown
     3. any image in the post folder
+  With `cover: {fan: true}` the tile shows the post's `fan:` images as a tilted
+  pair instead (cover.image is then only used for link previews).
 */ -}}
+{{- $fan := slice }}
+{{- if .Params.cover.fan }}
+  {{- range .Params.fan }}
+    {{- with $.Resources.GetMatch . }}
+      {{- $fan = $fan | append (cond (eq .MediaType.SubType "svg") . (.Fill "300x450 Smart q80")) }}
+    {{- end }}
+  {{- end }}
+{{- end }}
 {{- $img := "" }}
 {{- $src := "" }}
 {{- with .Params.cover.image }}
@@ -27,13 +37,17 @@
 {{- end }}
 
 {{- $title := .Title | plainify }}
-<a class="tile{{ if $title }} has-title{{ end }}{{ if not $src }} no-image{{ end }}" href="{{ .Permalink }}"
+<a class="tile{{ if $title }} has-title{{ end }}{{ if not (or $src $fan) }} no-image{{ end }}{{ if $fan }} has-fan{{ end }}" href="{{ .Permalink }}"
   aria-label="{{ $title | default (.Date.Format "2 January 2006") }}">
-  {{- with $src }}
-  <img src="{{ . }}" alt="{{ $title }}" loading="lazy" decoding="async">
+  {{- if $fan }}
+  <span class="tile-fan" aria-hidden="true">
+    {{- range $fan }}<img src="{{ .RelPermalink }}" alt="" loading="lazy" decoding="async">{{ end -}}
+  </span>
+  {{- else if $src }}
+  <img src="{{ $src }}" alt="{{ $title }}" loading="lazy" decoding="async">
   {{- end }}
   {{- with $title }}
-  {{- if $src }}<span class="tile-blur" aria-hidden="true"></span>{{ end }}
+  {{- if or $src $fan }}<span class="tile-blur" aria-hidden="true"></span>{{ end }}
   <span class="tile-title"><span class="t">{{ . }}</span><span class="d">{{ $.Date.Format "Jan 2, 2006" }}</span></span>
   {{- end }}
 </a>

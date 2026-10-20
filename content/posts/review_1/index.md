@@ -3,7 +3,8 @@ title: "Two books about AI"
 date: 2026-10-17
 draft: false
 cover:
-  image: "MachinesLikeMe.jpg"
+  image: "MachinesLikeMe.jpg"  # still used for link previews
+  fan: true  # grid thumbnail = the fan below
 fan: ["Klara_and_the_Sun.png", "MachinesLikeMe.jpg"]
 ---
 # [Klara and the Sun](https://www.goodreads.com/book/show/54120408)
