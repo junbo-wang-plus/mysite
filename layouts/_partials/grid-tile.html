@@ -38,7 +38,7 @@
 
 {{- $title := .Title | plainify }}
 <a class="tile{{ if $title }} has-title{{ end }}{{ if not (or $src $fan) }} no-image{{ end }}{{ if $fan }} has-fan{{ end }}" href="{{ .Permalink }}"
-  aria-label="{{ $title | default (.Date.Format "2 January 2006") }}">
+  aria-label="{{ $title | default (.Date.Format "2 January 2006") }}"><span class="tile-inner">
   {{- if $fan }}
   <span class="tile-fan" aria-hidden="true">
     {{- range $fan }}<img src="{{ .RelPermalink }}" alt="" loading="lazy" decoding="async">{{ end -}}
@@ -50,4 +50,4 @@
   {{- if or $src $fan }}<span class="tile-blur" aria-hidden="true"></span>{{ end }}
   <span class="tile-title"><span class="t">{{ . }}</span><span class="d">{{ $.Date.Format "Jan 2, 2006" }}</span></span>
   {{- end }}
-</a>
+</span></a>

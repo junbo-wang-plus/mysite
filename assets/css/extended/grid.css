@@ -11,17 +11,25 @@
     gap: 20px;
 }
 
+/* The link itself stays put; only .tile-inner lifts on hover. Moving the link
+   would slide it out from under a cursor resting on its bottom edge, and the
+   hover would flicker on and off. */
 .tile {
     position: relative;
     display: block;
     aspect-ratio: 1 / 1;
+}
+
+.tile-inner {
+    position: absolute;
+    inset: 0;
     overflow: hidden;
     border-radius: 6px;
     background: var(--code-bg);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.tile:hover {
+.tile:hover .tile-inner {
     transform: translateY(-4px);
     box-shadow: 0 14px 30px -18px rgba(22, 24, 29, 0.45);
 }
@@ -154,6 +162,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .tile,
+    .tile-inner,
     .tile img { transition: none; }
 }
