@@ -1,8 +1,15 @@
-{{- if .Text -}}
-<figure>
-  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}">
-  <figcaption>{{ .Text }}</figcaption>
+{{- /*
+  Every Markdown image in a post sits whole inside a square frame,
+  on a blurred copy of itself (styles: assets/css/extended/theme.css).
+  Images with an empty destination (e.g. ![]() placeholders) render nothing.
+*/ -}}
+{{- with .Destination -}}
+{{- $src := . | safeURL -}}
+<figure class="sq">
+  <img class="sq-bg" src="{{ $src }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
+  <img class="sq-fg" src="{{ $src }}" alt="{{ $.Text }}" loading="lazy" decoding="async">
+  {{- with $.Text }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
 </figure>
-{{- else -}}
-<img src="{{ .Destination | safeURL }}" alt="">
 {{- end -}}

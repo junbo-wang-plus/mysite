@@ -21,6 +21,7 @@ enableRobotsTXT = true
   [params.cover]
     linkFullImages = false
     responsiveImages = false
+    hiddenInSingle = true   # cover.image is the grid thumbnail; not repeated on the post page
 
 [[menu.main]]
   name = "CV"

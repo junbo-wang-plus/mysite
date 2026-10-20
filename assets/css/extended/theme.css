@@ -1,0 +1,255 @@
+/* Redesign: palette, ripple texture, typography, post-page details.
+   Loaded automatically by PaperMod (every file in assets/css/extended/). */
+
+/* ---------- Palette (PaperMod's own variables, retuned) ---------- */
+:root {
+    --theme: #E9F0F6;        /* page background: very faint blue */
+    --entry: #F7FAFC;        /* cards */
+    --primary: #16181D;      /* headings, links */
+    --secondary: #56606C;    /* dates, meta */
+    --tertiary: #D3DEE8;
+    --content: #1F2732;      /* body text */
+    --code-bg: #DCE6EF;
+    --border: #D3DEE8;
+    --panel: #DCE6EF;
+    --accent: #24527A;       /* wave line, quote mark, progress bar */
+    --ripple: url("/img/ripple-light.png");
+    --font-display: "Brawler", Georgia, serif;
+    --font-read: "Newsreader", Georgia, serif;
+    --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root[data-theme="dark"] {
+    --theme: #0E1A28;        /* deep blue */
+    --entry: #15253A;
+    --primary: #E6EDF3;
+    --secondary: #9AA8B6;
+    --tertiary: #24364A;
+    --content: #CED8E2;
+    --code-bg: #16283D;
+    --border: #24364A;
+    --panel: #16283D;
+    --accent: #8FB4D6;
+    --ripple: url("/img/ripple-dark.png");
+}
+
+/* ---------- Ripple background ----------
+   Short-crested capillary ripple field (random-phase, cos^6 spreading),
+   tiled at 512px; image is rendered at 2x for retina.
+   `:root body.list` beats PaperMod's `[data-theme=dark] .list` rule. */
+:root body,
+:root body.list {
+    background-color: var(--theme);
+    background-image: var(--ripple);
+    background-size: 512px 512px;
+    background-repeat: repeat;
+    font-family: var(--font-ui);
+}
+
+/* ---------- Typography ---------- */
+.logo a,
+#menu a,
+.post-title,
+.md-content h1,
+.md-content h2,
+.md-content h3 {
+    font-family: var(--font-display);
+}
+
+.logo a { font-weight: 700; letter-spacing: -0.01em; }
+#menu a { font-size: 17px; }
+
+.post-title {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+}
+
+/* Date above the title, in mono */
+.post-header { display: flex; flex-direction: column; }
+.post-header .post-meta {
+    order: -1;
+    margin: 0 0 12px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+/* Reading text */
+.post-content {
+    font-family: var(--font-read);
+    font-size: 20px;
+    line-height: 1.65;
+    color: var(--content);
+}
+
+.md-content h1 {
+    font-size: 34px;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin: 56px 0 8px;
+}
+
+.md-content a { color: var(--accent); }
+
+/* Author · year line under a book heading: {{< byline author="…" year="…" >}} */
+.md-content .byline {
+    margin: 0 0 18px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--secondary);
+}
+
+/* ---------- Pull quote: any Markdown "> …" ---------- */
+.md-content blockquote {
+    position: relative;
+    margin: 36px 0;
+    padding: 6px 0 6px 72px;
+    border: 0;
+    font-family: var(--font-read);
+    font-style: italic;
+    font-size: 30px;
+    line-height: 1.3;
+    color: var(--primary);
+}
+
+.md-content blockquote::before {
+    content: "\201C";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--font-display);
+    font-style: normal;
+    font-size: 88px;
+    line-height: 0.8;
+    color: var(--accent);
+}
+
+.md-content blockquote p { margin: 0; }
+
+/* ---------- Square image frame (render-image.html) ----------
+   Every post image sits whole inside a square, on a blurred copy of itself,
+   so tall book covers never take over a phone screen. */
+.md-content figure.sq {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 1 / 1;
+    margin: 8px 0 24px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--panel);
+}
+
+.md-content figure.sq img {
+    position: absolute;
+    margin: 0;
+    border-radius: 0;
+}
+
+.md-content figure.sq .sq-bg {
+    inset: -10%;
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    filter: blur(28px) saturate(1.1);
+    opacity: 0.55;
+}
+
+.md-content figure.sq .sq-fg {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 9%;
+    object-fit: contain;
+    filter: drop-shadow(0 14px 22px rgba(22, 24, 29, .35));
+}
+
+.md-content figure.sq figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 8px 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #fff;
+    text-align: left;
+    background: linear-gradient(to top, rgba(0, 0, 0, .45), transparent);
+}
+
+/* ---------- Tilted cover pair at the top of a post (front matter `fan:`) ---------- */
+.cover-fan {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    margin: 32px 0 8px;
+    padding: 56px 24px;
+    border-radius: 10px;
+    background: var(--panel);
+}
+
+.cover-fan img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px -24px rgba(22, 24, 29, .6);
+    transition: transform .4s ease;
+}
+
+.cover-fan img:nth-child(odd) { transform: rotate(-3deg); }
+.cover-fan img:nth-child(even) { transform: rotate(3deg); }
+.cover-fan:hover img:nth-child(odd) { transform: rotate(-6deg) translateX(-10px); }
+.cover-fan:hover img:nth-child(even) { transform: rotate(5deg) translateX(10px); }
+
+/* ---------- Prev / next as cards ---------- */
+.paginav {
+    background: transparent;
+    border: 0;
+    gap: 16px;
+}
+
+.paginav a {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--entry);
+    transition: border-color .2s ease, transform .2s ease;
+}
+
+.paginav a:hover {
+    background: var(--entry);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.paginav .title { font-family: var(--font-mono); letter-spacing: 0; text-transform: none; }
+
+/* ---------- Reading-progress bar (extend_footer.html) ---------- */
+.read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    z-index: 1000;
+    background: var(--accent);
+}
+
+/* ---------- Phone ---------- */
+@media screen and (max-width: 760px) {
+    .post-title { font-size: 40px; }
+    .cover-fan img { width: 132px; height: 198px; }
+    .md-content blockquote { font-size: 24px; padding-left: 56px; }
+    .md-content blockquote::before { font-size: 68px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cover-fan img,
+    .paginav a { transition: none; }
+}

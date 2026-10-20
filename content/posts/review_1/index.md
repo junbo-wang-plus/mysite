@@ -4,14 +4,21 @@ date: 2026-10-17
 draft: false
 cover:
   image: "MachinesLikeMe.jpg"
+fan: ["Klara_and_the_Sun.png", "MachinesLikeMe.jpg"]
 ---
 # Klara and the Sun
+{{< byline author="Kazuo Ishiguro" year="2021" >}}
+
 ![](Klara_and_the_Sun.png)
 [Goodreads](https://www.goodreads.com/book/show/54120408)
 
 A fully conscientious robot with the mind of a child and yet superhuman abilities being sold as an Artificial Friend for children. I love that you could not really tell what Ishiguro intended the message of the story to be. Most of the story revolves around how a cognitively unevenly (or compared to humans) developed robot sees and learns about the world. The choice that the AFs are fully equipped top-of-the-spec shells for near zero understanding of the human world makes it less a story about robots but one about how humans always end up disappointing each other and how we always eventually grow up and move on. All Klara had left in the end was the benevolent Sun. 
+
+> All Klara had left in the end was the benevolent Sun.
 	
 # Machines like Me
+{{< byline author="Ian McEwan" year="2019" >}}
+
 ![](MachinesLikeMe.jpg)
 [Goodreads](https://www.goodreads.com/book/show/42086795)
 

@@ -33,6 +33,7 @@
   <img src="{{ . }}" alt="{{ $title }}" loading="lazy" decoding="async">
   {{- end }}
   {{- with $title }}
-  <span class="tile-title">{{ . }}</span>
+  {{- if $src }}<span class="tile-blur" aria-hidden="true"></span>{{ end }}
+  <span class="tile-title"><span class="t">{{ . }}</span><span class="d">{{ $.Date.Format "Jan 2, 2006" }}</span></span>
   {{- end }}
 </a>

@@ -1,0 +1,2 @@
+{{- /* Usage, under a book heading:  {{< byline author="Kazuo Ishiguro" year="2021" >}} */ -}}
+<p class="byline">{{ .Get "author" }}{{ with .Get "year" }} · {{ . }}{{ end }}</p>

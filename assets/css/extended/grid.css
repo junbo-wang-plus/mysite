@@ -2,13 +2,13 @@
 
 /* Give the grid more room than PaperMod's 720px reading width. */
 .main:has(.photo-grid) {
-    max-width: calc(960px + var(--gap) * 2);
+    max-width: calc(1032px + var(--gap) * 2);
 }
 
 .photo-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
+    gap: 20px;
 }
 
 .tile {
@@ -16,7 +16,14 @@
     display: block;
     aspect-ratio: 1 / 1;
     overflow: hidden;
+    border-radius: 6px;
     background: var(--code-bg);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px -18px rgba(22, 24, 29, 0.45);
 }
 
 .tile img {
@@ -24,34 +31,92 @@
     height: 100%;
     object-fit: cover;
     margin: 0;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 .tile:hover img {
     transform: scale(1.03);
 }
 
-/* Titled posts: text overlaid at the bottom of the picture. */
+/* Titled posts: frosted band at the bottom of the picture.
+   The blur fades in upward via a mask, so there is no hard edge. */
+.tile-blur {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 46%;
+    background: rgba(22, 24, 29, 0.22);
+    -webkit-backdrop-filter: blur(14px) saturate(1.15);
+    backdrop-filter: blur(14px) saturate(1.15);
+    -webkit-mask-image: linear-gradient(to top, #000 55%, transparent);
+    mask-image: linear-gradient(to top, #000 55%, transparent);
+}
+
 .tile-title {
     position: absolute;
     inset: auto 0 0 0;
-    padding: 40px 14px 12px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.3;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.tile-title .t {
+    font-family: var(--font-display, Georgia, serif);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.tile-title .d {
+    font-family: var(--font-mono, monospace);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+}
+
+.tile:hover .tile-title .t {
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
 /* Post without any image: show the title on a plain square. */
+.tile.no-image .tile-blur { display: none; }
 .tile.no-image .tile-title {
     inset: 0;
-    display: flex;
-    align-items: flex-end;
+    justify-content: flex-end;
     color: var(--primary);
-    background: none;
     text-shadow: none;
+}
+
+/* ---------- Wave strip above the grid (layouts/_partials/wave.html) ---------- */
+.wave-strip {
+    height: 60px;
+    margin: 8px 0 28px;
+    overflow: hidden;
+}
+
+.wave-strip svg {
+    display: block;
+    width: 100%;
+    height: 60px;
+}
+
+.wave-strip path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.6;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.75;
+}
+
+/* Tablet: two per row. */
+@media screen and (max-width: 760px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
 }
 
 /* Mobile: one photo per row. */
@@ -60,8 +125,9 @@
         grid-template-columns: 1fr;
         gap: 12px;
     }
+}
 
-    .tile-title {
-        font-size: 18px;
-    }
+@media (prefers-reduced-motion: reduce) {
+    .tile,
+    .tile img { transition: none; }
 }

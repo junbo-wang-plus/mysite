@@ -19,6 +19,8 @@
 
 {{- $paginator := .Paginate $pages }}
 
+{{- if .IsHome }}{{ partial "wave.html" . }}{{ end }}
+
 <div class="photo-grid">
   {{- range $paginator.Pages }}
   {{- partial "grid-tile.html" . }}
