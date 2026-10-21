@@ -1,5 +1,5 @@
 ---
-title: "Two books about AI"
+title: "Two Books about AI"
 date: 2026-10-17
 draft: false
 cover:

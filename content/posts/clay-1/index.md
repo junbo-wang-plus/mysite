@@ -1,5 +1,5 @@
 ---
-title: "Clay log 1"
+title: "Clay Log 1"
 date: 2026-04-13
 draft: false
 cover:

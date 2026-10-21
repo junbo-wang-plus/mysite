@@ -1,5 +1,5 @@
 ---
-title: "Two works about capitalism"
+title: "Two Works about Capitalism"
 date: 2026-10-17
 draft: true
 cover:

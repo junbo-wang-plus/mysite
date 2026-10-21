@@ -1,5 +1,5 @@
 ---
-title: "Two excruciating works"
+title: "Two Excruciating Experiences"
 date: 2026-10-17
 draft: false
 cover:
