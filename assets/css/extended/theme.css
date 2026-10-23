@@ -116,15 +116,15 @@ body::before {
     .paginav a { background-color: var(--entry); }
 }
 
-/* ---------- Header: part of the background, frosting toward its lower edge ----------
+/* ---------- Header: frosted at the top, melting into the page below ----------
    No panel of its own. Two blur layers behind the nav, each masked to fade
-   in downward: clear at the top, so the bar is the sea itself, and most
-   frosted at the bottom edge, where it parts from content scrolling under. */
+   out downward: heaviest at the very top, gone by the bottom edge, so the
+   bar has no line where it meets the page. */
 .header {
     position: sticky;
     top: 0;
     z-index: 100;
-    padding-bottom: 18px;
+    padding-bottom: 28px;
 }
 
 .header::before,
@@ -137,18 +137,18 @@ body::before {
 }
 
 .header::before {
-    -webkit-backdrop-filter: blur(4px);
-    backdrop-filter: blur(4px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%);
-    mask-image: linear-gradient(to bottom, transparent, #000 45%);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
+    mask-image: linear-gradient(to bottom, #000 40%, transparent);
 }
 
 .header::after {
-    background: linear-gradient(to bottom, transparent 40%, var(--header-tint));
-    -webkit-backdrop-filter: blur(16px);
-    backdrop-filter: blur(16px);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 30%, #000);
-    mask-image: linear-gradient(to bottom, transparent 30%, #000);
+    background: linear-gradient(to bottom, var(--header-tint), transparent 70%);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    -webkit-mask-image: linear-gradient(to bottom, #000 25%, transparent 75%);
+    mask-image: linear-gradient(to bottom, #000 25%, transparent 75%);
 }
 
 .header-nav { line-height: 64px; }
