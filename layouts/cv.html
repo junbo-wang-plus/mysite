@@ -8,12 +8,9 @@
 <article class="post-single cv">
   <header class="cv-head">
     <h1 class="post-title">{{ $cv.name }}</h1>
-    {{- with $cv.tagline }}<p class="cv-sub">{{ . }}</p>{{ end }}
-    <p class="cv-contact">
-      <a href="mailto:{{ $cv.email }}">{{ $cv.email }}</a>
-      <span>{{ $cv.location }}</span>
-      {{- with $cv.pdf }}<a class="cv-pdf" href="{{ . }}" target="_blank" rel="noopener">Download PDF</a>{{ end }}
-    </p>
+    {{- with $cv.pdf }}
+    <a class="cv-pdf" href="{{ . }}" target="_blank" rel="noopener">PDF</a>
+    {{- end }}
   </header>
 
   <section class="cv-section">
@@ -80,11 +77,5 @@
     {{- end }}
   </section>
 
-  <section class="cv-section">
-    <h2>Relevant Graduate Courses</h2>
-    <ul class="cv-chips">
-      {{- range $cv.courses }}<li>{{ . }}</li>{{ end }}
-    </ul>
-  </section>
 </article>
 {{- end }}{{- /* end main */ -}}

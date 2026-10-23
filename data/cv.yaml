@@ -2,9 +2,6 @@
 # Text fields accept Markdown.
 
 name: Junbo Wang
-tagline: PhD candidate in applied mathematics · nonlinear dynamics of surface gravity waves
-email: junbo.wang@uib.no
-location: Bergen, Norway
 pdf: https://www.dropbox.com/scl/fi/p98r4pefq2setgxfhjt1a/CV.pdf?rlkey=8bn6sshdhi9acre3lm35u3248&dl=0
 
 education:
@@ -128,17 +125,3 @@ skills:
   - label: Other
     items: Numerical modeling, 3D printing, Machine learning
 
-courses:
-  - Compressible flows
-  - Computational fluid dynamics for compressible flows
-  - Fluid mechanics of combustion systems
-  - Foundations of fluid dynamics
-  - Computational fluid dynamics for incompressible flows
-  - Viscous and turbulent flows
-  - Atmospheric chemistry
-  - Geophysical fluid dynamics
-  - Introduction to ocean science
-  - Introduction to atmospheric and oceanic radiation, physics, and chemistry
-  - Introduction to machine learning for physical sciences
-  - Coastal engineering
-  - Atmospheric and oceanic turbulence
