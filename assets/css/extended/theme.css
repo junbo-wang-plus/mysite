@@ -1,32 +1,32 @@
 /* Redesign: palette, sea background, matte glass, typography, post-page details.
    Loaded automatically by PaperMod (every file in assets/css/extended/). */
 
-/* ---------- Palette (PaperMod's own variables, retuned) ---------- */
+/* ---------- Palette (PaperMod's own variables, retuned) ----------
+   Neutral greys to sit with the black-and-white photo; --accent is the one
+   colour (links, wave line, quote mark, progress bar). */
 :root {
-    --theme: #DCE9F3;        /* page background: pale sea blue */
-    --entry: #F3F8FB;        /* cards */
-    --primary: #14202E;      /* headings, links */
-    --secondary: #4F5F70;    /* dates, meta */
-    --tertiary: #C9DAE7;
-    --content: #1C2734;      /* body text */
-    --code-bg: #D3E3EF;
-    --border: #C9DAE7;
-    --panel: #D3E3EF;
-    --accent: #1F5C8C;       /* wave line, quote mark, progress bar */
-
-    /* sea background (see "Sea background" below) */
-    --sea-wash: linear-gradient(180deg, rgba(228, 238, 247, .55), rgba(214, 229, 242, .62));
-    --sea-blend: normal;
+    --theme: #E4E4E5;        /* page background (under the photo) */
+    --entry: #F4F4F5;        /* cards */
+    --primary: #16171A;      /* headings, links */
+    --secondary: #55575C;    /* dates, meta */
+    --tertiary: #D2D2D5;
+    --content: #1D1E21;      /* body text */
+    --code-bg: #DADADD;
+    --border: #D2D2D5;
+    --panel: #DADADD;
+    --accent: #1F5C8C;
 
     /* matte glass */
     --glass-bg: rgba(255, 255, 255, .42);
     --glass-bg-hover: rgba(255, 255, 255, .62);
     --glass-edge: rgba(255, 255, 255, .75);
     --glass-edge-dim: rgba(255, 255, 255, .35);
-    --glass-shadow: 0 18px 40px -26px rgba(20, 50, 90, .45);
-    --glass-blur: blur(18px) saturate(1.5);
+    --glass-shadow: 0 18px 40px -26px rgba(10, 10, 14, .5);
+    --glass-blur: blur(18px) saturate(1.2);
     --grain-opacity: .35;
-    --header-tint: rgba(225, 236, 245, .28);
+    --header-tint: rgba(240, 240, 240, .28);
+    --paper: rgba(246, 246, 247, .74);    /* reading panel on posts */
+    --wave: var(--accent);
 
     --font-display: "Brawler", Georgia, serif;
     --font-read: "Newsreader", Georgia, serif;
@@ -35,33 +35,32 @@
 }
 
 :root[data-theme="dark"] {
-    --theme: #0A1F3C;        /* deep sea blue */
-    --entry: #102A4C;
-    --primary: #E8F0F7;
-    --secondary: #9DB0C4;
-    --tertiary: #1D3B62;
-    --content: #D0DCE8;
-    --code-bg: #0F2848;
-    --border: #1D3B62;
-    --panel: #0F2848;
+    --theme: #121315;
+    --entry: #1A1B1E;
+    --primary: #EDEDEE;
+    --secondary: #A4A5AA;
+    --tertiary: #2B2C30;
+    --content: #D8D8DB;
+    --code-bg: #1C1D20;
+    --border: #2B2C30;
+    --panel: #1C1D20;
     --accent: #8CC8EA;
 
-    --sea-wash: linear-gradient(180deg, #1E4170, #2C5A92);
-    --sea-blend: multiply;
-
-    --glass-bg: rgba(140, 190, 240, .08);
-    --glass-bg-hover: rgba(160, 205, 245, .16);
-    --glass-edge: rgba(190, 225, 255, .22);
-    --glass-edge-dim: rgba(190, 225, 255, .10);
-    --glass-shadow: 0 22px 44px -26px rgba(0, 6, 20, .85);
+    /* darker glass, so light text holds up over the bright fog */
+    --glass-bg: rgba(16, 16, 18, .34);
+    --glass-bg-hover: rgba(30, 30, 34, .5);
+    --glass-edge: rgba(255, 255, 255, .2);
+    --glass-edge-dim: rgba(255, 255, 255, .08);
+    --glass-shadow: 0 22px 44px -26px rgba(0, 0, 0, .85);
     --grain-opacity: .18;
-    --header-tint: rgba(8, 26, 52, .22);
+    --header-tint: rgba(10, 10, 12, .25);
+    --paper: rgba(14, 14, 16, .66);
+    --wave: #1B1C1F;          /* the strip sits on the bright fog */
 }
 
 /* ---------- Sea background ----------
-   A black-and-white photo of fog over swell (static/img/sea.jpg), fixed so
-   the page glides over still water, with a wash on top: multiplied dark blue
-   in dark mode (fog turns deep blue, troughs stay black), a pale veil in light.
+   A black-and-white photo of fog over swell (static/img/sea.jpg), shown as is
+   in both themes and fixed, so the page glides over still water.
    `:root body.list` beats PaperMod's `[data-theme=dark] .list` rule. */
 :root body,
 :root body.list {
@@ -69,22 +68,13 @@
     font-family: var(--font-ui);
 }
 
-body::before,
-body::after {
+body::before {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-}
-
-body::before {
     background: #777 url("/img/sea.jpg") center 35% / cover no-repeat;
-}
-
-body::after {
-    background: var(--sea-wash);
-    mix-blend-mode: var(--sea-blend);
 }
 
 /* ---------- Matte glass ----------
@@ -163,6 +153,34 @@ body::after {
 
 .header-nav { line-height: 64px; }
 
+/* ---------- Reading panel and footer ----------
+   The photo runs from bright fog to dark water, so text gets its own frosted
+   surface instead of tinting the photo. */
+.main:has(.post-single) {
+    max-width: calc(var(--main-width) + 96px + var(--gap) * 2);
+}
+
+.post-single {
+    position: relative;
+    margin-top: 12px;
+    padding: 40px 48px 48px;
+    border-radius: 22px;
+    background: var(--paper);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--glass-edge-dim), var(--glass-shadow);
+}
+
+.footer {
+    width: fit-content;
+    margin: 0 auto 24px;
+    padding: 4px 16px;
+    border-radius: 14px;
+    background: var(--paper);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+}
+
 .logo-switches { align-items: center; }
 
 .theme-toggle {
@@ -229,6 +247,7 @@ body::after {
 }
 
 .logo a { font-weight: 700; letter-spacing: -0.01em; }
+:root[data-theme="dark"] .logo a { text-shadow: 0 1px 14px rgba(0, 0, 0, .6), 0 1px 2px rgba(0, 0, 0, .45); }
 #menu a { font-size: 17px; }
 
 .post-title {
@@ -421,6 +440,7 @@ body::after {
 /* ---------- Phone ---------- */
 @media screen and (max-width: 760px) {
     .post-title { font-size: 40px; }
+    .post-single { padding: 28px 20px 32px; border-radius: 18px; }
     .header-nav { line-height: 56px; }
     /* The tab row collapses while hidden; the header's margin grows by the
        same amount so the page below doesn't shift (a shift would read as a

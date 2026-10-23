@@ -101,7 +101,7 @@
     position: absolute;
     inset: auto 0 0 0;
     height: 46%;
-    background: linear-gradient(to top, rgba(6, 22, 44, 0.32), rgba(6, 22, 44, 0.12));
+    background: linear-gradient(to top, rgba(12, 12, 14, 0.32), rgba(12, 12, 14, 0.12));
     -webkit-backdrop-filter: blur(14px) saturate(1.15);
     backdrop-filter: blur(14px) saturate(1.15);
     -webkit-mask-image: linear-gradient(to top, #000 55%, transparent);
@@ -172,7 +172,7 @@
     stroke-width: 1.8;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
-    filter: drop-shadow(0 0 4px var(--accent));
+    filter: drop-shadow(0 0 4px var(--wave));
 }
 
 .wave-strip .wave-fill {
@@ -180,7 +180,7 @@
     stroke: none;
 }
 
-.wave-strip stop { stop-color: var(--accent); }
+.wave-strip stop { stop-color: var(--wave); }
 
 /* Tablet: two per row. */
 @media screen and (max-width: 760px) {
