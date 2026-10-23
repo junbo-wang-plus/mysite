@@ -26,6 +26,7 @@
     --glass-shadow: 0 18px 40px -26px rgba(20, 50, 90, .45);
     --glass-blur: blur(18px) saturate(1.5);
     --grain-opacity: .35;
+    --header-tint: rgba(225, 236, 245, .28);
 
     --font-display: "Brawler", Georgia, serif;
     --font-read: "Newsreader", Georgia, serif;
@@ -54,6 +55,7 @@
     --glass-edge-dim: rgba(190, 225, 255, .10);
     --glass-shadow: 0 22px 44px -26px rgba(0, 6, 20, .85);
     --grain-opacity: .18;
+    --header-tint: rgba(8, 26, 52, .22);
 }
 
 /* ---------- Sea background ----------
@@ -92,7 +94,6 @@ body::after {
     --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 -.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-.header-nav,
 #menu a,
 .theme-toggle,
 .cover-fan,
@@ -109,7 +110,6 @@ body::after {
         var(--glass-shadow);
 }
 
-.header-nav::before,
 .cover-fan::before,
 .paginav a::before {
     content: "";
@@ -122,27 +122,46 @@ body::after {
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-    .header-nav,
     .cover-fan,
     .paginav a { background-color: var(--entry); }
 }
 
-/* ---------- Header: floating glass bar with glass tabs ---------- */
+/* ---------- Header: part of the background, frosting toward its lower edge ----------
+   No panel of its own. Two blur layers behind the nav, each masked to fade
+   in downward: clear at the top, so the bar is the sea itself, and most
+   frosted at the bottom edge, where it parts from content scrolling under. */
 .header {
     position: sticky;
     top: 0;
     z-index: 100;
-    padding: 14px var(--gap) 0;
+    padding-bottom: 18px;
 }
 
-.header-nav {
-    max-width: calc(1032px - 8px);
-    padding: 0 10px 0 22px;
-    border-radius: 20px;
-    line-height: 58px;
+.header::before,
+.header::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
 }
 
-.header-nav > * { position: relative; }   /* above the grain */
+.header::before {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%);
+    mask-image: linear-gradient(to bottom, transparent, #000 45%);
+}
+
+.header::after {
+    background: linear-gradient(to bottom, transparent 40%, var(--header-tint));
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 30%, #000);
+    mask-image: linear-gradient(to bottom, transparent 30%, #000);
+}
+
+.header-nav { line-height: 64px; }
 
 .logo-switches { align-items: center; }
 
@@ -389,8 +408,7 @@ body::after {
 /* ---------- Phone ---------- */
 @media screen and (max-width: 760px) {
     .post-title { font-size: 40px; }
-    .header { padding: 10px 12px 0; }
-    .header-nav { padding: 0 6px 0 16px; border-radius: 18px; line-height: 52px; }
+    .header-nav { line-height: 56px; }
     #menu { padding-bottom: 8px; }
     #menu a { padding: 0 11px; line-height: 32px; }
     .cover-fan img { width: 132px; height: 198px; }
