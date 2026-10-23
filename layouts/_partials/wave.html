@@ -10,7 +10,19 @@
 */ -}}
 <div class="wave-strip" aria-hidden="true"
   data-hs="2" data-tp="8" data-gamma="3.3" data-order="2" data-speed="1" data-seed="7">
-  <svg viewBox="0 0 1000 60" preserveAspectRatio="none"><path d="M0 30 L1000 30"></path></svg>
+  <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="wave-stroke" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-opacity="0"/><stop offset=".15" stop-opacity=".9"/>
+        <stop offset=".85" stop-opacity=".9"/><stop offset="1" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="wave-fill" x1="0" x2="0" y1="0" y2="1">
+        <stop offset="0" stop-opacity=".22"/><stop offset="1" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <path class="wave-fill" d="M0 30 L1000 30 L1000 60 L0 60 Z"></path>
+    <path class="wave-line" d="M0 30 L1000 30"></path>
+  </svg>
 </div>
 {{- $js := resources.Get "js/wave.js" | minify | fingerprint }}
 <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

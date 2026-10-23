@@ -1,19 +1,32 @@
-/* Redesign: palette, ripple texture, typography, post-page details.
+/* Redesign: palette, sea background, matte glass, typography, post-page details.
    Loaded automatically by PaperMod (every file in assets/css/extended/). */
 
 /* ---------- Palette (PaperMod's own variables, retuned) ---------- */
 :root {
-    --theme: #E9F0F6;        /* page background: very faint blue */
-    --entry: #F7FAFC;        /* cards */
-    --primary: #16181D;      /* headings, links */
-    --secondary: #56606C;    /* dates, meta */
-    --tertiary: #D3DEE8;
-    --content: #1F2732;      /* body text */
-    --code-bg: #DCE6EF;
-    --border: #D3DEE8;
-    --panel: #DCE6EF;
-    --accent: #24527A;       /* wave line, quote mark, progress bar */
-    --ripple: url("/img/ripple-light.png");
+    --theme: #DCE9F3;        /* page background: pale sea blue */
+    --entry: #F3F8FB;        /* cards */
+    --primary: #14202E;      /* headings, links */
+    --secondary: #4F5F70;    /* dates, meta */
+    --tertiary: #C9DAE7;
+    --content: #1C2734;      /* body text */
+    --code-bg: #D3E3EF;
+    --border: #C9DAE7;
+    --panel: #D3E3EF;
+    --accent: #1F5C8C;       /* wave line, quote mark, progress bar */
+
+    /* sea background (see "Sea background" below) */
+    --sea-wash: linear-gradient(180deg, rgba(228, 238, 247, .55), rgba(214, 229, 242, .62));
+    --sea-blend: normal;
+
+    /* matte glass */
+    --glass-bg: rgba(255, 255, 255, .42);
+    --glass-bg-hover: rgba(255, 255, 255, .62);
+    --glass-edge: rgba(255, 255, 255, .75);
+    --glass-edge-dim: rgba(255, 255, 255, .35);
+    --glass-shadow: 0 18px 40px -26px rgba(20, 50, 90, .45);
+    --glass-blur: blur(18px) saturate(1.5);
+    --grain-opacity: .35;
+
     --font-display: "Brawler", Georgia, serif;
     --font-read: "Newsreader", Georgia, serif;
     --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -21,31 +34,157 @@
 }
 
 :root[data-theme="dark"] {
-    --theme: #0E1A28;        /* deep blue */
-    --entry: #15253A;
-    --primary: #E6EDF3;
-    --secondary: #9AA8B6;
-    --tertiary: #24364A;
-    --content: #CED8E2;
-    --code-bg: #16283D;
-    --border: #24364A;
-    --panel: #16283D;
-    --accent: #8FB4D6;
-    --ripple: url("/img/ripple-dark.png");
+    --theme: #0A1F3C;        /* deep sea blue */
+    --entry: #102A4C;
+    --primary: #E8F0F7;
+    --secondary: #9DB0C4;
+    --tertiary: #1D3B62;
+    --content: #D0DCE8;
+    --code-bg: #0F2848;
+    --border: #1D3B62;
+    --panel: #0F2848;
+    --accent: #8CC8EA;
+
+    --sea-wash: linear-gradient(180deg, #1E4170, #2C5A92);
+    --sea-blend: multiply;
+
+    --glass-bg: rgba(140, 190, 240, .08);
+    --glass-bg-hover: rgba(160, 205, 245, .16);
+    --glass-edge: rgba(190, 225, 255, .22);
+    --glass-edge-dim: rgba(190, 225, 255, .10);
+    --glass-shadow: 0 22px 44px -26px rgba(0, 6, 20, .85);
+    --grain-opacity: .18;
 }
 
-/* ---------- Ripple background ----------
-   Short-crested capillary ripple field (random-phase, cos^6 spreading),
-   tiled at 512px; image is rendered at 2x for retina.
+/* ---------- Sea background ----------
+   A black-and-white photo of fog over swell (static/img/sea.jpg), fixed so
+   the page glides over still water, with a wash on top: multiplied dark blue
+   in dark mode (fog turns deep blue, troughs stay black), a pale veil in light.
    `:root body.list` beats PaperMod's `[data-theme=dark] .list` rule. */
 :root body,
 :root body.list {
-    background-color: var(--theme);
-    background-image: var(--ripple);
-    background-size: 512px 512px;
-    background-repeat: repeat;
+    background: var(--theme);
     font-family: var(--font-ui);
 }
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::before {
+    background: #777 url("/img/sea.jpg") center 35% / cover no-repeat;
+}
+
+body::after {
+    background: var(--sea-wash);
+    mix-blend-mode: var(--sea-blend);
+}
+
+/* ---------- Matte glass ----------
+   Translucent tint + backdrop blur + a fine grain (the "matte"), with a
+   brighter top edge where light catches it. */
+:root {
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 -.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.header-nav,
+#menu a,
+.theme-toggle,
+.cover-fan,
+.paginav a,
+.pagination a {
+    position: relative;
+    background-color: var(--glass-bg);
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, .06), transparent 60%);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    box-shadow:
+        inset 0 1px 0 var(--glass-edge),
+        inset 0 0 0 1px var(--glass-edge-dim),
+        var(--glass-shadow);
+}
+
+.header-nav::before,
+.cover-fan::before,
+.paginav a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--grain);
+    opacity: var(--grain-opacity);
+    pointer-events: none;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .header-nav,
+    .cover-fan,
+    .paginav a { background-color: var(--entry); }
+}
+
+/* ---------- Header: floating glass bar with glass tabs ---------- */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 14px var(--gap) 0;
+}
+
+.header-nav {
+    max-width: calc(1032px - 8px);
+    padding: 0 10px 0 22px;
+    border-radius: 20px;
+    line-height: 58px;
+}
+
+.header-nav > * { position: relative; }   /* above the grain */
+
+.logo-switches { align-items: center; }
+
+.theme-toggle {
+    width: 34px;
+    height: 34px;
+    min-height: 0 !important;
+    align-self: center;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    box-shadow: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--glass-edge-dim);
+    transition: background-color .25s ease, transform .25s ease;
+}
+
+.theme-toggle:hover { background-color: var(--glass-bg-hover); transform: rotate(-12deg); }
+
+#menu {
+    column-gap: 6px;
+    align-items: center;
+}
+
+#menu a {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    line-height: 36px;
+    border-radius: 12px;
+    box-shadow: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--glass-edge-dim);
+    transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+#menu a:hover {
+    background-color: var(--glass-bg-hover);
+    transform: translateY(-1px);
+    box-shadow:
+        inset 0 1px 0 var(--glass-edge),
+        inset 0 0 0 1px var(--glass-edge),
+        0 10px 22px -14px rgba(0, 10, 30, .6);
+}
+
+#menu a svg { opacity: .6; }
 
 /* ---------- Typography ---------- */
 .logo a,
@@ -190,9 +329,10 @@
     gap: 28px;
     margin: 32px 0 8px;
     padding: 56px 24px;
-    border-radius: 10px;
-    background: var(--panel);
+    border-radius: 16px;
 }
+
+.cover-fan img { position: relative; }
 
 .cover-fan img {
     width: 200px;
@@ -216,16 +356,19 @@
 }
 
 .paginav a {
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--entry);
-    transition: border-color .2s ease, transform .2s ease;
+    border: 0;
+    border-radius: 14px;
+    transition: background-color .25s ease, transform .25s ease;
 }
 
 .paginav a:hover {
-    background: var(--entry);
-    border-color: var(--primary);
+    background-color: var(--glass-bg-hover);
     transform: translateY(-2px);
+}
+
+.pagination a {
+    border-radius: 14px;
+    color: var(--primary);
 }
 
 .paginav .title { font-family: var(--font-mono); letter-spacing: 0; text-transform: none; }
@@ -238,12 +381,18 @@
     height: 3px;
     width: 0;
     z-index: 1000;
-    background: var(--accent);
+    border-radius: 0 3px 3px 0;
+    background: linear-gradient(90deg, transparent, var(--accent));
+    box-shadow: 0 0 12px var(--accent);
 }
 
 /* ---------- Phone ---------- */
 @media screen and (max-width: 760px) {
     .post-title { font-size: 40px; }
+    .header { padding: 10px 12px 0; }
+    .header-nav { padding: 0 6px 0 16px; border-radius: 18px; line-height: 52px; }
+    #menu { padding-bottom: 8px; }
+    #menu a { padding: 0 11px; line-height: 32px; }
     .cover-fan img { width: 132px; height: 198px; }
     .md-content blockquote { font-size: 24px; padding-left: 56px; }
     .md-content blockquote::before { font-size: 68px; }
@@ -251,5 +400,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     .cover-fan img,
-    .paginav a { transition: none; }
+    .paginav a,
+    #menu a,
+    .theme-toggle { transition: none; }
 }

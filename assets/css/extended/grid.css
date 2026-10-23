@@ -24,15 +24,33 @@
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border-radius: 6px;
+    border-radius: 14px;
     background: var(--code-bg);
+    box-shadow: var(--glass-shadow);
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
 .tile:hover .tile-inner {
     transform: translateY(-4px);
-    box-shadow: 0 14px 30px -18px rgba(22, 24, 29, 0.45);
+    box-shadow: 0 26px 46px -24px rgba(0, 10, 30, 0.7);
 }
+
+/* Glass edge over the picture, and a soft sheen that drifts across on hover. */
+.tile-inner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow:
+        inset 0 1px 0 var(--glass-edge),
+        inset 0 0 0 1px var(--glass-edge-dim);
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .14) 50%, transparent 65%)
+        no-repeat -200% 0 / 250% 100%;
+    transition: background-position 0.9s ease;
+}
+
+.tile:hover .tile-inner::after { background-position: 150% 0; }
 
 .tile img {
     width: 100%;
@@ -56,8 +74,13 @@
     align-items: center;
     gap: 7%;
     padding-bottom: 12%;
-    background: var(--panel, var(--code-bg));
+    background-color: var(--glass-bg);
+    background-image: linear-gradient(160deg, rgba(255, 255, 255, .10), transparent 55%);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
 }
+
+.tile.has-fan .tile-inner { background: transparent; }
 
 .tile .tile-fan img {
     width: 34%;
@@ -78,7 +101,7 @@
     position: absolute;
     inset: auto 0 0 0;
     height: 46%;
-    background: rgba(22, 24, 29, 0.22);
+    background: linear-gradient(to top, rgba(6, 22, 44, 0.32), rgba(6, 22, 44, 0.12));
     -webkit-backdrop-filter: blur(14px) saturate(1.15);
     backdrop-filter: blur(14px) saturate(1.15);
     -webkit-mask-image: linear-gradient(to top, #000 55%, transparent);
@@ -114,8 +137,13 @@
     text-underline-offset: 4px;
 }
 
-/* Post without any image: show the title on a plain square. */
+/* Post without any image: show the title on a plain glass square. */
 .tile.no-image .tile-blur { display: none; }
+.tile.no-image .tile-inner {
+    background-color: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+}
 .tile.no-image .tile-title {
     inset: 0;
     justify-content: flex-end;
@@ -134,16 +162,25 @@
     display: block;
     width: 100%;
     height: 60px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
 }
 
-.wave-strip path {
+.wave-strip .wave-line {
     fill: none;
-    stroke: var(--accent);
-    stroke-width: 1.6;
+    stroke: url(#wave-stroke);
+    stroke-width: 1.8;
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
-    opacity: 0.75;
+    filter: drop-shadow(0 0 4px var(--accent));
 }
+
+.wave-strip .wave-fill {
+    fill: url(#wave-fill);
+    stroke: none;
+}
+
+.wave-strip stop { stop-color: var(--accent); }
 
 /* Tablet: two per row. */
 @media screen and (max-width: 760px) {
@@ -163,5 +200,6 @@
 
 @media (prefers-reduced-motion: reduce) {
     .tile-inner,
+    .tile-inner::after,
     .tile img { transition: none; }
 }
