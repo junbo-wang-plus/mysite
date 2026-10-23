@@ -25,7 +25,7 @@ enableRobotsTXT = true
 
 [[menu.main]]
   name = "CV"
-  url = "https://www.dropbox.com/scl/fi/p98r4pefq2setgxfhjt1a/CV.pdf?rlkey=8bn6sshdhi9acre3lm35u3248&dl=0"
+  url = "/cv/"
   weight = 1
 
 [[menu.main]]

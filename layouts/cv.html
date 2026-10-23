@@ -1,0 +1,90 @@
+{{- /*
+  Native CV page (content/cv.md, `layout = 'cv'`). All content lives in
+  data/cv.yaml; this file only lays it out. Sections are a date column beside
+  the entry, collapsing to one column on phones; prints as a plain document.
+*/ -}}
+{{- define "main" }}
+{{- $cv := site.Data.cv }}
+<article class="post-single cv">
+  <header class="cv-head">
+    <h1 class="post-title">{{ $cv.name }}</h1>
+    {{- with $cv.tagline }}<p class="cv-sub">{{ . }}</p>{{ end }}
+    <p class="cv-contact">
+      <a href="mailto:{{ $cv.email }}">{{ $cv.email }}</a>
+      <span>{{ $cv.location }}</span>
+      {{- with $cv.pdf }}<a class="cv-pdf" href="{{ . }}" target="_blank" rel="noopener">Download PDF</a>{{ end }}
+    </p>
+  </header>
+
+  <section class="cv-section">
+    <h2>Education</h2>
+    {{- range $cv.education }}
+    <div class="cv-entry">
+      <div class="cv-when">{{ .dates }}{{ with .gpa }}<span>GPA {{ . }}</span>{{ end }}</div>
+      <div class="cv-what">
+        <h3>{{ .school }}</h3>
+        <p class="cv-role">{{ .degree }}</p>
+        <p class="cv-meta">{{ .unit }} · {{ .place }}</p>
+      </div>
+    </div>
+    {{- end }}
+  </section>
+
+  <section class="cv-section">
+    <h2>Experience</h2>
+    {{- range $cv.experience }}
+    <div class="cv-entry">
+      <div class="cv-when">{{ .dates }}<span>{{ .place }}</span></div>
+      <div class="cv-what">
+        <h3>{{ .org }}</h3>
+        <p class="cv-role">{{ .role }}</p>
+        {{- with .note }}<p class="cv-meta">{{ . | markdownify }}</p>{{ end }}
+        <ul>
+          {{- range .points }}<li>{{ . | markdownify }}</li>{{ end }}
+        </ul>
+      </div>
+    </div>
+    {{- end }}
+  </section>
+
+  <section class="cv-section">
+    <h2>Presentations and Papers</h2>
+    {{- range $cv.publications }}
+    <div class="cv-entry">
+      <div class="cv-when">{{ .year }}{{ with .status }}<span>{{ . }}</span>{{ end }}</div>
+      <div class="cv-what cv-pub">
+        <p class="cv-pub-title">{{ .title | markdownify }}</p>
+        <p class="cv-meta">{{ replace (.authors | htmlEscape) "J. Wang" "<strong>J. Wang</strong>" | safeHTML }} · <em>{{ .venue }}</em></p>
+      </div>
+    </div>
+    {{- end }}
+  </section>
+
+  <section class="cv-section">
+    <h2>Awards</h2>
+    {{- range $cv.awards }}
+    <div class="cv-entry">
+      <div class="cv-when">{{ .detail }}</div>
+      <div class="cv-what"><h3>{{ .name }}</h3></div>
+    </div>
+    {{- end }}
+  </section>
+
+  <section class="cv-section">
+    <h2>Skills</h2>
+    {{- range $cv.skills }}
+    <div class="cv-entry">
+      <div class="cv-when">{{ .label }}</div>
+      <div class="cv-what"><p>{{ .items }}</p></div>
+    </div>
+    {{- end }}
+  </section>
+
+  <section class="cv-section">
+    <h2>Relevant Graduate Courses</h2>
+    <ul class="cv-chips">
+      {{- range $cv.courses }}<li>{{ . }}</li>{{ end }}
+    </ul>
+  </section>
+</article>
+{{- end }}{{- /* end main */ -}}

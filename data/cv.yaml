@@ -1,0 +1,144 @@
+# CV content for /cv/ (layouts/cv.html). Edit here; the page re-renders.
+# Text fields accept Markdown.
+
+name: Junbo Wang
+tagline: PhD candidate in applied mathematics · nonlinear dynamics of surface gravity waves
+email: junbo.wang@uib.no
+location: Bergen, Norway
+pdf: https://www.dropbox.com/scl/fi/p98r4pefq2setgxfhjt1a/CV.pdf?rlkey=8bn6sshdhi9acre3lm35u3248&dl=0
+
+education:
+  - school: University of Bergen
+    place: Bergen, Norway
+    unit: Faculty of Science and Technology
+    degree: PhD Candidate in Applied Mathematics
+    dates: Sep 2024 – present
+  - school: University of California, Los Angeles
+    place: Los Angeles, CA, United States
+    unit: Henry Samueli School of Engineering
+    degree: M.S. in Mechanical Engineering, Fluid Mechanics
+    dates: Sep 2022 – Mar 2024
+    gpa: 3.9/4.0
+  - school: Waseda University
+    place: Tokyo, Japan
+    unit: School of Creative Science and Engineering
+    degree: B.Eng. in Mechanical Engineering
+    dates: Sep 2018 – Sep 2022
+    gpa: 3.8/4.0
+
+experience:
+  - org: University of Bergen
+    role: PhD Candidate
+    dates: Sep 2024 – present
+    place: Bergen, Norway
+    points:
+      - Ongoing project developing theoretical models on wave–bathymetry interaction
+      - Developed theoretical models for predicting the nonlinear wave–wave and wave–bathymetry interactions near the coast
+      - Constructed an envelope-type second-order phase-resolved numerical solver for surface gravity waves
+      - Performed statistical analysis on wave measurements obtained by a stereo-camera system in the open ocean
+      - Developed and tested a low-cost in-situ ship-board stereo-camera system for measuring wave heights
+      - Supervised by Dr. Henrik Kalisch and Dr. Øyvind Breivik
+
+  - org: One Ocean Expedition, UN Ocean Decade
+    role: Field Course Participant
+    note: Organized by the University of Bergen
+    dates: Jul – Aug 2025
+    place: Azores – Greenland
+    points:
+      - Sailed aboard the Norwegian tallship *Statsraad Lehmkuhl* from Ponta Delgada, Azores to Nuuk, Greenland, participating in workshops and scientific activities across the North Atlantic
+      - Attended and presented at associated workshops in Ponta Delgada, Nuuk, and Bergen (One Ocean Week 2026)
+      - Conducted shipboard research validating surface drifter trajectories and wave measurements against satellite observations and spectral wave models using statistical methods
+      - Participated in an open ship event during One Ocean Week 2026, disseminating ocean research activities to Norwegian upper secondary and high school students
+
+  - org: University of California, Los Angeles
+    role: Research Data Analyst II
+    dates: Apr 2024 – Jul 2024
+    place: Los Angeles, CA
+    points:
+      - Project on performance evaluation of respiratory protection for firefighters responding to wildland–urban interface fires
+      - Used CAD and 3D printing to fabricate cartridge-specific connectors for the experimental apparatus
+      - Project overseen by Dr. Rachael Jones and Dr. Candace Su-Jung Tsai, funded by The California Climate Action Seed and Matching Grants
+
+  - org: University of California, Los Angeles
+    role: Graduate Student Researcher (GSR)
+    dates: Jan 2023 – Mar 2024
+    place: Los Angeles, CA
+    points:
+      - Developed a wearable respirable particle sampler with direct-reading capabilities for occupational health
+      - Performed numerical simulations (CFD) to optimize sampler performance
+      - Used CAD and 3D printing to design and construct prototypes
+      - Conducted lab experiments to calibrate sensor fusion algorithms in simulated operating environments
+      - Supervised by Dr. Candace Su-Jung Tsai, funded by the National Institute for Occupational Safety & Health (NIOSH)
+
+  - org: Waseda University & Rice University
+    role: Team for Advanced Flow Simulation and Modeling (T*AFSM)
+    note: Joint research lab led by Kenji Takizawa (Waseda University) and Tayfun E. Tezduyar (Rice University)
+    dates: Apr 2020 – Sep 2022
+    place: Tokyo, Japan
+    points:
+      - Investigated subsonic and supersonic flow around spacecraft capsules upon reentry into the atmosphere
+      - Performed numerical simulations (CFD) using an in-house solver on a supercomputer (TACC)
+      - Graduation thesis on aerodynamics of supersonic spacecraft–parachute systems
+
+  - org: University of Siegen, Tohoku University & Waseda University
+    role: Participatory Design in Robotics for Elderly Care in Germany & Japan (PADERO)
+    note: A Germany–Japan hackathon to develop scenarios for employing socially interactive robots in nursing homes
+    dates: Dec 2019
+    place: Tokyo, Japan
+    points:
+      - Won 3rd place with a mixed reality game prototype for elder cognitive and physical exercise
+
+# "J. Wang" is set in bold wherever it appears in authors.
+publications:
+  - authors: J. Wang
+    year: 2026
+    title: Long-short wave interaction over a flat seabed near shore
+    venue: Water Waves
+    status: submitted
+  - authors: J. Wang, Y. Li
+    year: 2026
+    title: The coupling between swell and wind waves atop an abrupt depth transition
+    venue: Ocean Sciences Meeting 2026
+  - authors: J. Wang, Y. Li
+    year: 2026
+    title: Nonlinear Waves atop a Varying Bathymetry
+    venue: 2026 DNV Nordic Maritime Universities Workshop
+  - authors: N. Morrissey, J. Wang, R. Courtney, C. Krause, J.P. Angulo, C.S. Tsai, D. Janes
+    year: 2024
+    title: Optical Characterization of Coal Particulate on PETG Filters Between 375nm and 1500nm Light
+    venue: Electronic Materials Conference 2024
+
+awards:
+  - name: Azusa Ono Memorial Scholarship
+    detail: Waseda University, 2021 – 2022
+  - name: The Monbukagakusho Honors Scholarship for Privately-Financed International Students
+    detail: Japanese government, 2018 – 2019
+
+skills:
+  - label: Languages
+    items: Mandarin Chinese (native), English (bilingual), Japanese (proficient), Norwegian (intermediate)
+  - label: Programming
+    items: C, C++, HTML, Julia, LaTeX, MATLAB, Python, Swift
+  - label: Development
+    items: Docker, Git, Linux, Unity, Vim
+  - label: CAD
+    items: AutoCAD, Rhinoceros, SolidWorks
+  - label: Simulation
+    items: Abaqus, Ansys, COMSOL, ParaView, Pointwise, REEF3D, ROMS, Oceananigans
+  - label: Other
+    items: Numerical modeling, 3D printing, Machine learning
+
+courses:
+  - Compressible flows
+  - Computational fluid dynamics for compressible flows
+  - Fluid mechanics of combustion systems
+  - Foundations of fluid dynamics
+  - Computational fluid dynamics for incompressible flows
+  - Viscous and turbulent flows
+  - Atmospheric chemistry
+  - Geophysical fluid dynamics
+  - Introduction to ocean science
+  - Introduction to atmospheric and oceanic radiation, physics, and chemistry
+  - Introduction to machine learning for physical sciences
+  - Coastal engineering
+  - Atmospheric and oceanic turbulence
