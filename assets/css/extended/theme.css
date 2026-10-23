@@ -60,12 +60,13 @@
 
 /* ---------- Extra schemes (swatch buttons, extend_footer.html) ----------
    Both build on the dark palette; the photo gets a multiplied wash so the fog
-   takes the scheme's colour while the troughs stay black. */
+   takes the scheme's colour while the troughs stay black. Headings, the name,
+   tabs, links and thumbnail titles take the accent; body text stays light. */
 :root[data-scheme="lightning"] {
     --theme: #06143F;
     --entry: #0B2266;
-    --primary: #F4F7FF;
-    --secondary: #B4C5F2;
+    --primary: #FFD60A;      /* accent-coloured headings, name, tabs, links */
+    --secondary: #E8D27A;    /* dates, meta */
     --tertiary: #1C3C99;
     --content: #E2E9FB;
     --code-bg: #0B2266;
@@ -88,8 +89,8 @@
 :root[data-scheme="fern"] {
     --theme: #072A1A;
     --entry: #0C3A24;
-    --primary: #F1FBF4;
-    --secondary: #A8CDB7;
+    --primary: #EE6BE6;      /* accent-coloured headings, name, tabs, links */
+    --secondary: #E3A6DE;    /* dates, meta */
     --tertiary: #1D5A3B;
     --content: #DCEFE3;
     --code-bg: #0C3A24;
@@ -276,6 +277,16 @@ body::before {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), inset 0 0 0 1px rgba(255, 255, 255, .18),
         0 6px 14px -8px rgba(0, 0, 0, .6);
     transition: transform .25s ease, box-shadow .25s ease;
+}
+
+:root[data-scheme] .tile-title {
+    color: var(--primary);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .6), 0 0 14px rgba(0, 0, 0, .45);
+}
+
+/* Darker frosted band, so accent titles hold up on bright photos. */
+:root[data-scheme] .tile-blur {
+    background: linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, .2));
 }
 
 .scheme-lightning { --sea-1: #2E7BFF; --sea-2: #0B2FA3; --bead: #FFD60A; }
