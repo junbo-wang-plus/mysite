@@ -205,8 +205,8 @@ body::after {
 
 #menu a svg { opacity: .6; }
 
-/* Tabs drift up and fade out once the page is scrolled (.scrolled is set in
-   extend_footer.html), and come back at the top. */
+/* Tabs drift up and fade out while scrolling down (.scrolled is set in
+   extend_footer.html), and come back on any scroll up. */
 #menu {
     transition: opacity .3s ease, transform .3s ease, visibility .3s;
 }
@@ -422,12 +422,18 @@ body::after {
 @media screen and (max-width: 760px) {
     .post-title { font-size: 40px; }
     .header-nav { line-height: 56px; }
+    /* The tab row collapses while hidden; the header's margin grows by the
+       same amount so the page below doesn't shift (a shift would read as a
+       scroll and flip the tabs back). */
+    .header { transition: margin-bottom .3s ease; }
     #menu {
-        max-height: 48px;
+        box-sizing: border-box;
+        height: 40px;
         padding-bottom: 8px;
-        transition: opacity .3s ease, transform .3s ease, visibility .3s, max-height .3s ease, padding .3s ease;
+        transition: opacity .3s ease, transform .3s ease, visibility .3s, height .3s ease, padding .3s ease;
     }
-    .header.scrolled #menu { max-height: 0; padding-bottom: 0; }   /* give the row back */
+    .header.scrolled { margin-bottom: 40px; }
+    .header.scrolled #menu { height: 0; padding-bottom: 0; }
     #menu a { padding: 0 11px; line-height: 32px; }
     .cover-fan img { width: 132px; height: 198px; }
     .md-content blockquote { font-size: 24px; padding-left: 56px; }
@@ -437,6 +443,7 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
     .cover-fan img,
     .paginav a,
+    .header,
     #menu,
     #menu a,
     .theme-toggle { transition: none; }

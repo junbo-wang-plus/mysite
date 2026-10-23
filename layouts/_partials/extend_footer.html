@@ -16,13 +16,22 @@
 })();
 </script>
 {{- end }}
-{{- /* Mark the header once the page is scrolled, to hide the menu tabs. */ -}}
+{{- /* Mark the header while scrolling down, to hide the menu tabs; any
+   scroll back up (or reaching the top) brings them back. */ -}}
 <script>
 (function () {
   var header = document.querySelector('.header');
   if (!header) return;
-  function update() { header.classList.toggle('scrolled', window.scrollY > 40); }
+  var last = window.scrollY;
+  function update() {
+    var y = window.scrollY, dy = y - last;
+    if (y <= 40) header.classList.remove('scrolled');
+    else if (dy > 4) header.classList.add('scrolled');
+    else if (dy < -4) header.classList.remove('scrolled');
+    else return;                    // ignore jitter; keep `last` as the reference
+    last = y;
+  }
   window.addEventListener('scroll', update, { passive: true });
-  update();
+  if (last > 40) header.classList.add('scrolled');
 })();
 </script>
