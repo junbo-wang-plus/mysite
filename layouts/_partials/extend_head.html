@@ -2,3 +2,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Brawler:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+{{- /* Colour scheme picked with the swatch buttons (extend_footer.html), applied
+   before first paint so the page doesn't flash the default. */ -}}
+<script>
+try {
+  (function (s) {
+    if (s === 'lightning' || s === 'fern') document.documentElement.dataset.scheme = s;
+  })(localStorage.getItem('pref-scheme'));
+} catch (e) {}
+</script>

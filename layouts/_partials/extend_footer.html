@@ -35,3 +35,42 @@
   if (last > 40) header.classList.add('scrolled');
 })();
 </script>
+{{- /* Two extra colour schemes as swatch buttons beside the light/dark toggle.
+   Clicking a swatch sets <html data-scheme>; clicking it again, or the
+   light/dark toggle, returns to the plain photo. */ -}}
+<script>
+(function () {
+  var toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+  var root = document.documentElement;
+  var schemes = [
+    { id: 'lightning', label: 'Lightning: electric blue and yellow' },
+    { id: 'fern', label: 'Fern: green and magenta' }
+  ];
+  function set(id) {
+    if (id) root.dataset.scheme = id; else delete root.dataset.scheme;
+    try { id ? localStorage.setItem('pref-scheme', id) : localStorage.removeItem('pref-scheme'); } catch (e) {}
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.for === id ? 'true' : 'false'); });
+  }
+  var buttons = schemes.map(function (s) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'scheme-toggle scheme-' + s.id;
+    b.dataset.for = s.id;
+    b.title = s.label;
+    b.setAttribute('aria-label', s.label);
+    b.addEventListener('click', function () { set(root.dataset.scheme === s.id ? null : s.id); });
+    return b;
+  });
+  var anchor = toggle;
+  buttons.forEach(function (b) { anchor.after(b); anchor = b; });
+  set(root.dataset.scheme || null);
+  // While a scheme is on, the light/dark toggle just turns it off (captured
+  // so PaperMod's own handler doesn't also flip the mode).
+  toggle.addEventListener('click', function (e) {
+    if (!root.dataset.scheme) return;
+    e.stopImmediatePropagation();
+    set(null);
+  }, true);
+})();
+</script>
