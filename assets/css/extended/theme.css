@@ -168,6 +168,12 @@ body::before {
     pointer-events: none;
 }
 
+/* Buttons get a heavier grain than the larger panels. */
+#menu a::before,
+.theme-toggle::before,
+.paginav a::before,
+.pagination a::before { opacity: calc(var(--grain-opacity) * 1.6); }
+
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .cover-fan,
     .paginav a { background-color: var(--entry); }
@@ -257,9 +263,22 @@ body::before {
     border: 0;
     border-radius: 0;
     cursor: pointer;
+    position: relative;
+    isolation: isolate;          /* keeps the grain's z-index -1 inside the swatch */
     background: radial-gradient(circle at 68% 32%, var(--bead) 0 22%, transparent 24%),
         linear-gradient(160deg, var(--sea-1), var(--sea-2));
     transition: transform .25s ease;
+}
+
+.scheme-toggle::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--grain);
+    mix-blend-mode: overlay;
+    opacity: 1;
+    pointer-events: none;
 }
 
 :root[data-scheme] .tile-title {

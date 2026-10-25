@@ -11,8 +11,8 @@
     gap: 20px;
 }
 
-/* Square, flat tiles printed like the background photo: softly out of focus,
-   with film grain and a faint vignette. Hovering pulls the picture into focus. */
+/* Square, flat tiles: the picture softly out of focus with a faint vignette.
+   Hovering pulls it into focus. */
 .tile {
     position: relative;
     display: block;
@@ -26,18 +26,13 @@
     background: var(--code-bg);
 }
 
-/* Grain (overlay blend: lightens and darkens) over a soft vignette. */
 .tile-inner::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        var(--grain),
-        radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .28));
-    background-size: 200px 200px, 100% 100%;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .28));
     mix-blend-mode: overlay;
-    opacity: .9;
     transition: opacity 0.5s ease;
 }
 
