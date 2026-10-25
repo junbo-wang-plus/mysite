@@ -11,6 +11,7 @@ enableRobotsTXT = true
   author = "Junbo Wang"
   defaultTheme = "auto"
   ShowReadingTime = false
+  hideAuthor = true        # date only above post titles
   ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = false
