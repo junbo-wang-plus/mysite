@@ -11,9 +11,8 @@
     gap: 20px;
 }
 
-/* The link itself stays put; only .tile-inner lifts on hover. Moving the link
-   would slide it out from under a cursor resting on its bottom edge, and the
-   hover would flicker on and off. */
+/* Square, flat tiles printed like the background photo: softly out of focus,
+   with film grain and a faint vignette. Hovering pulls the picture into focus. */
 .tile {
     position: relative;
     display: block;
@@ -24,45 +23,40 @@
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border-radius: 14px;
     background: var(--code-bg);
-    box-shadow: var(--glass-shadow);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-.tile:hover .tile-inner {
-    transform: translateY(-4px);
-    box-shadow: 0 26px 46px -24px rgba(0, 10, 30, 0.7);
-}
-
-/* Glass edge over the picture, and a soft sheen that drifts across on hover. */
+/* Grain (overlay blend: lightens and darkens) over a soft vignette. */
 .tile-inner::after {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
     pointer-events: none;
-    box-shadow:
-        inset 0 1px 0 var(--glass-edge),
-        inset 0 0 0 1px var(--glass-edge-dim);
-    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, .14) 50%, transparent 65%)
-        no-repeat -200% 0 / 250% 100%;
-    transition: background-position 0.9s ease;
+    background:
+        var(--grain),
+        radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, .28));
+    background-size: 200px 200px, 100% 100%;
+    mix-blend-mode: overlay;
+    opacity: .9;
+    transition: opacity 0.5s ease;
 }
 
-.tile:hover .tile-inner::after { background-position: 150% 0; }
+.tile:hover .tile-inner::after { opacity: .6; }
 
 .tile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     margin: 0;
-    transition: transform 0.4s ease;
+    filter: blur(1.2px) contrast(.96);
+    transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-.tile:hover img {
-    transform: scale(1.03);
-}
+/* Scaled up a little so the blur's soft rim stays outside the frame. */
+.tile-inner > img { transform: scale(1.04); }
+
+.tile:hover img { filter: blur(0) contrast(1); }
+.tile:hover .tile-inner > img { transform: scale(1.06); }
 
 /* Tilted cover pair as the thumbnail (front matter `cover: {fan: true}`),
    a small copy of the .cover-fan block at the top of the post. */
@@ -75,7 +69,6 @@
     gap: 7%;
     padding-bottom: 12%;
     background-color: var(--glass-bg);
-    background-image: linear-gradient(160deg, rgba(255, 255, 255, .10), transparent 55%);
     -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
 }
@@ -86,7 +79,6 @@
     width: 34%;
     height: auto;
     aspect-ratio: 2 / 3;
-    border-radius: 3px;
     box-shadow: 0 14px 28px -16px rgba(22, 24, 29, .6);
 }
 
@@ -151,33 +143,27 @@
     text-shadow: none;
 }
 
-/* ---------- Wave strip above the grid (layouts/_partials/wave.html) ---------- */
+/* ---------- Wave strip above the grid (layouts/_partials/wave.html) ----------
+   Drawn by shade alone: no outline, just a fill that darkens under the
+   surface and fades with depth, blurred so the crest edge stays soft. */
 .wave-strip {
-    height: 60px;
-    margin: 8px 0 28px;
+    height: 72px;
+    margin: 0 0 22px;
     overflow: hidden;
 }
 
 .wave-strip svg {
     display: block;
     width: 100%;
-    height: 60px;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-
-.wave-strip .wave-line {
-    fill: none;
-    stroke: url(#wave-stroke);
-    stroke-width: 1.8;
-    stroke-linejoin: round;
-    vector-effect: non-scaling-stroke;
-    filter: drop-shadow(0 0 4px var(--wave));
+    height: 72px;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
 }
 
 .wave-strip .wave-fill {
     fill: url(#wave-fill);
     stroke: none;
+    filter: blur(1.5px);
 }
 
 .wave-strip stop { stop-color: var(--wave); }
@@ -199,7 +185,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .tile-inner,
     .tile-inner::after,
     .tile img { transition: none; }
 }

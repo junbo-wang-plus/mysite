@@ -1,4 +1,4 @@
-/* Redesign: palette, sea background, matte glass, typography, post-page details.
+/* Redesign: palette, sea background, flat grained panels, typography, post-page details.
    Loaded automatically by PaperMod (every file in assets/css/extended/). */
 
 /* ---------- Palette (PaperMod's own variables, retuned) ----------
@@ -16,16 +16,13 @@
     --panel: #DADADD;
     --accent: #1F5C8C;
 
-    /* matte glass */
-    --glass-bg: rgba(255, 255, 255, .42);
-    --glass-bg-hover: rgba(255, 255, 255, .62);
-    --glass-edge: rgba(255, 255, 255, .75);
-    --glass-edge-dim: rgba(255, 255, 255, .35);
-    --glass-shadow: 0 18px 40px -26px rgba(10, 10, 14, .5);
-    --glass-blur: blur(18px) saturate(1.2);
-    --grain-opacity: .35;
+    /* flat panels: a thin wash of the fog's own grey, blurred photo behind */
+    --glass-bg: rgba(228, 228, 229, .30);
+    --glass-bg-hover: rgba(228, 228, 229, .55);
+    --glass-blur: blur(16px);
+    --grain-opacity: .55;
     --header-tint: rgba(240, 240, 240, .28);
-    --paper: rgba(246, 246, 247, .74);    /* reading panel on posts */
+    --paper: rgba(232, 232, 233, .70);    /* reading panel on posts */
     --wave: var(--accent);
 
     --font-display: "Brawler", Georgia, serif;
@@ -46,13 +43,10 @@
     --panel: #1C1D20;
     --accent: #8CC8EA;
 
-    /* darker glass, so light text holds up over the bright fog */
+    /* darker wash, so light text holds up over the bright fog */
     --glass-bg: rgba(16, 16, 18, .34);
     --glass-bg-hover: rgba(30, 30, 34, .5);
-    --glass-edge: rgba(255, 255, 255, .2);
-    --glass-edge-dim: rgba(255, 255, 255, .08);
-    --glass-shadow: 0 22px 44px -26px rgba(0, 0, 0, .85);
-    --grain-opacity: .18;
+    --grain-opacity: .4;
     --header-tint: rgba(10, 10, 12, .25);
     --paper: rgba(14, 14, 16, .66);
     --wave: #1B1C1F;          /* the strip sits on the bright fog */
@@ -77,10 +71,7 @@
 
     --glass-bg: rgba(6, 22, 80, .34);
     --glass-bg-hover: rgba(14, 40, 130, .5);
-    --glass-edge: rgba(255, 236, 140, .28);
-    --glass-edge-dim: rgba(255, 255, 255, .1);
-    --glass-shadow: 0 22px 44px -26px rgba(0, 4, 30, .85);
-    --grain-opacity: .18;
+    --grain-opacity: .4;
     --header-tint: rgba(4, 16, 60, .3);
     --paper: rgba(5, 18, 64, .68);
     --wave: var(--accent);
@@ -101,10 +92,7 @@
 
     --glass-bg: rgba(6, 40, 22, .34);
     --glass-bg-hover: rgba(14, 70, 40, .5);
-    --glass-edge: rgba(240, 150, 235, .28);
-    --glass-edge-dim: rgba(255, 255, 255, .1);
-    --glass-shadow: 0 22px 44px -26px rgba(0, 20, 8, .85);
-    --grain-opacity: .18;
+    --grain-opacity: .4;
     --header-tint: rgba(4, 30, 16, .3);
     --paper: rgba(5, 32, 18, .68);
     --wave: var(--accent);
@@ -140,36 +128,42 @@ body::before {
     mix-blend-mode: multiply;
 }
 
-/* ---------- Matte glass ----------
-   Translucent tint + backdrop blur + a fine grain (the "matte"), with a
-   brighter top edge where light catches it. */
+/* ---------- Flat panels ----------
+   No edges, no corners, no shadows: a thin tint over the blurred photo, with
+   film grain on top (overlay blend, so it darkens and lightens like the photo's
+   own grain). The grain sits at z-index -1 inside each panel's stacking context
+   (backdrop-filter makes one), above the tint but under the text. */
 :root {
-    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 -.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='.33 .33 .33 0 0 .33 .33 .33 0 0 .33 .33 .33 0 0 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 #menu a,
 .theme-toggle,
 .cover-fan,
 .paginav a,
-.pagination a {
+.pagination a,
+.post-single,
+.footer {
     position: relative;
+    border-radius: 0;
     background-color: var(--glass-bg);
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, .06), transparent 60%);
     -webkit-backdrop-filter: var(--glass-blur);
     backdrop-filter: var(--glass-blur);
-    box-shadow:
-        inset 0 1px 0 var(--glass-edge),
-        inset 0 0 0 1px var(--glass-edge-dim),
-        var(--glass-shadow);
 }
 
+#menu a::before,
+.theme-toggle::before,
 .cover-fan::before,
-.paginav a::before {
+.paginav a::before,
+.pagination a::before,
+.post-single::before,
+.footer::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
+    z-index: -1;
     background: var(--grain);
+    mix-blend-mode: overlay;
     opacity: var(--grain-opacity);
     pointer-events: none;
 }
@@ -227,21 +221,14 @@ body::before {
     position: relative;
     margin-top: 12px;
     padding: 40px 48px 48px;
-    border-radius: 22px;
-    background: var(--paper);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
-    box-shadow: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--glass-edge-dim), var(--glass-shadow);
+    background-color: var(--paper);
 }
 
 .footer {
     width: fit-content;
     margin: 0 auto 24px;
     padding: 4px 16px;
-    border-radius: 14px;
-    background: var(--paper);
-    -webkit-backdrop-filter: var(--glass-blur);
-    backdrop-filter: var(--glass-blur);
+    background-color: var(--paper);
 }
 
 .logo-switches { align-items: center; }
@@ -252,16 +239,14 @@ body::before {
     min-height: 0 !important;
     align-self: center;
     padding: 0;
-    border-radius: 50%;
     justify-content: center;
-    box-shadow: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--glass-edge-dim);
     transition: background-color .25s ease, transform .25s ease;
 }
 
 .theme-toggle:hover { background-color: var(--glass-bg-hover); transform: rotate(-12deg); }
 
-/* Scheme swatches: a glass disc of the scheme's sea colour with its accent
-   as a bead; the active one gets an accent ring. */
+/* Scheme swatches: a flat square of the scheme's sea colour with its accent
+   as a bead; the active one gets an accent outline. */
 .scheme-toggle {
     flex: none;
     width: 26px;
@@ -270,13 +255,11 @@ body::before {
     padding: 0;
     align-self: center;
     border: 0;
-    border-radius: 50%;
+    border-radius: 0;
     cursor: pointer;
     background: radial-gradient(circle at 68% 32%, var(--bead) 0 22%, transparent 24%),
         linear-gradient(160deg, var(--sea-1), var(--sea-2));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), inset 0 0 0 1px rgba(255, 255, 255, .18),
-        0 6px 14px -8px rgba(0, 0, 0, .6);
-    transition: transform .25s ease, box-shadow .25s ease;
+    transition: transform .25s ease;
 }
 
 :root[data-scheme] .tile-title {
@@ -295,7 +278,8 @@ body::before {
 .scheme-toggle:hover { transform: scale(1.12); }
 
 .scheme-toggle[aria-pressed="true"] {
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .45), 0 0 0 2px var(--theme), 0 0 0 3.5px var(--bead);
+    outline: 1.5px solid var(--bead);
+    outline-offset: 2px;
 }
 
 #menu {
@@ -308,19 +292,10 @@ body::before {
     align-items: center;
     padding: 0 14px;
     line-height: 36px;
-    border-radius: 12px;
-    box-shadow: inset 0 1px 0 var(--glass-edge), inset 0 0 0 1px var(--glass-edge-dim);
-    transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
+    transition: background-color .25s ease;
 }
 
-#menu a:hover {
-    background-color: var(--glass-bg-hover);
-    transform: translateY(-1px);
-    box-shadow:
-        inset 0 1px 0 var(--glass-edge),
-        inset 0 0 0 1px var(--glass-edge),
-        0 10px 22px -14px rgba(0, 10, 30, .6);
-}
+#menu a:hover { background-color: var(--glass-bg-hover); }
 
 #menu a svg { opacity: .6; }
 
@@ -430,7 +405,6 @@ body::before {
     max-width: 440px;
     aspect-ratio: 1 / 1;
     margin: 8px 0 24px;
-    border-radius: 8px;
     overflow: hidden;
     background: var(--panel);
 }
@@ -482,7 +456,6 @@ body::before {
     gap: 28px;
     margin: 32px 0 8px;
     padding: 56px 24px;
-    border-radius: 16px;
 }
 
 .cover-fan img { position: relative; }
@@ -491,7 +464,7 @@ body::before {
     width: 200px;
     height: 300px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 0;
     box-shadow: 0 20px 40px -24px rgba(22, 24, 29, .6);
     transition: transform .4s ease;
 }
@@ -510,19 +483,12 @@ body::before {
 
 .paginav a {
     border: 0;
-    border-radius: 14px;
-    transition: background-color .25s ease, transform .25s ease;
+    transition: background-color .25s ease;
 }
 
-.paginav a:hover {
-    background-color: var(--glass-bg-hover);
-    transform: translateY(-2px);
-}
+.paginav a:hover { background-color: var(--glass-bg-hover); }
 
-.pagination a {
-    border-radius: 14px;
-    color: var(--primary);
-}
+.pagination a { color: var(--primary); }
 
 .paginav .title { font-family: var(--font-mono); letter-spacing: 0; text-transform: none; }
 
@@ -534,7 +500,6 @@ body::before {
     height: 3px;
     width: 0;
     z-index: 1000;
-    border-radius: 0 3px 3px 0;
     background: linear-gradient(90deg, transparent, var(--accent));
     box-shadow: 0 0 12px var(--accent);
 }
@@ -542,7 +507,7 @@ body::before {
 /* ---------- Phone ---------- */
 @media screen and (max-width: 760px) {
     .post-title { font-size: 40px; }
-    .post-single { padding: 28px 20px 32px; border-radius: 18px; }
+    .post-single { padding: 28px 20px 32px; }
     .header-nav { line-height: 56px; }
     /* The tab row collapses while hidden; the header's margin grows by the
        same amount so the page below doesn't shift (a shift would read as a

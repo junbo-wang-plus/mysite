@@ -6,7 +6,6 @@
 (function () {
   var strip = document.querySelector('.wave-strip');
   if (!strip) return;
-  var path = strip.querySelector('.wave-line');
   var fill = strip.querySelector('.wave-fill');
   var d = strip.dataset;
   var Hs = +d.hs || 2, Tp = +d.tp || 8, gamma = +d.gamma || 3.3;
@@ -59,9 +58,7 @@
       var Y = Math.min(59, Math.max(1, 30 - eta * vs));
       pts[j] = (j / (M - 1) * 1000).toFixed(1) + ' ' + Y.toFixed(2);
     }
-    var line = 'M' + pts.join(' L');
-    path.setAttribute('d', line);
-    if (fill) fill.setAttribute('d', line + ' L1000 60 L0 60 Z');
+    fill.setAttribute('d', 'M' + pts.join(' L') + ' L1000 60 L0 60 Z');
   }
 
   var t = 0;
