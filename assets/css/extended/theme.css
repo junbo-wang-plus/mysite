@@ -3,7 +3,7 @@
 
 /* ---------- Palette (PaperMod's own variables, retuned) ----------
    Neutral greys to sit with the black-and-white photo; --accent is the one
-   colour (links, wave line, quote mark, progress bar). */
+   colour (links, quote mark, progress bar). */
 :root {
     --theme: #E4E4E5;        /* page background (under the photo) */
     --entry: #F4F4F5;        /* cards */
@@ -23,7 +23,7 @@
     --grain-opacity: .55;
     --header-tint: rgba(240, 240, 240, .28);
     --paper: rgba(232, 232, 233, .70);    /* reading panel on posts */
-    --wave: var(--accent);
+    --wave: #B4B5B9;          /* light grey shade on the fog */
 
     --font-display: "Brawler", Georgia, serif;
     --font-read: "Newsreader", Georgia, serif;
