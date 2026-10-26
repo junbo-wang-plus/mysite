@@ -36,8 +36,9 @@
 })();
 </script>
 {{- /* Two extra colour schemes as swatch buttons beside the light/dark toggle.
-   Clicking a swatch sets <html data-scheme>; clicking it again, or the
-   light/dark toggle, returns to the plain photo. */ -}}
+   Clicking a swatch sets <html data-scheme>; clicking it again swaps the
+   scheme's main and accent colours ("<id>-swap"), and again swaps back. The
+   light/dark toggle returns to the plain photo. */ -}}
 <script>
 (function () {
   var toggle = document.getElementById('theme-toggle');
@@ -50,16 +51,19 @@
   function set(id) {
     if (id) root.dataset.scheme = id; else delete root.dataset.scheme;
     try { id ? localStorage.setItem('pref-scheme', id) : localStorage.removeItem('pref-scheme'); } catch (e) {}
-    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.for === id ? 'true' : 'false'); });
+    buttons.forEach(function (b) {
+      var on = id === b.dataset.for || id === b.dataset.for + '-swap';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
   }
   var buttons = schemes.map(function (s) {
     var b = document.createElement('button');
     b.type = 'button';
     b.className = 'scheme-toggle scheme-' + s.id;
     b.dataset.for = s.id;
-    b.title = s.label;
+    b.title = s.label + ' (click again to swap colours)';
     b.setAttribute('aria-label', s.label);
-    b.addEventListener('click', function () { set(root.dataset.scheme === s.id ? null : s.id); });
+    b.addEventListener('click', function () { set(root.dataset.scheme === s.id ? s.id + '-swap' : s.id); });
     return b;
   });
   var anchor = toggle;

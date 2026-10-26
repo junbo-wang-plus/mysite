@@ -7,7 +7,7 @@
 <script>
 try {
   (function (s) {
-    if (s === 'lightning' || s === 'fern') document.documentElement.dataset.scheme = s;
+    if (/^(lightning|fern)(-swap)?$/.test(s)) document.documentElement.dataset.scheme = s;
   })(localStorage.getItem('pref-scheme'));
 } catch (e) {}
 </script>

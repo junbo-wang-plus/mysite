@@ -53,7 +53,8 @@
 }
 
 /* ---------- Extra schemes (swatch buttons, extend_footer.html) ----------
-   Both build on the dark palette; the photo gets a multiplied wash so the fog
+   Each has a swapped variant ("-swap": main and accent colours traded).
+   All but lightning-swap build on the dark palette; the photo gets a multiplied wash so the fog
    takes the scheme's colour while the troughs stay black. Headings, the name,
    tabs, links and thumbnail titles take the accent; body text stays light. */
 :root[data-scheme="lightning"] {
@@ -95,6 +96,49 @@
     --grain-opacity: .4;
     --header-tint: rgba(4, 30, 16, .3);
     --paper: rgba(5, 32, 18, .68);
+    --wave: var(--accent);
+}
+
+:root[data-scheme="lightning-swap"] {
+    --theme: #FFE873;
+    --entry: #FFF3B0;
+    --primary: #0B3BD6;      /* blue headings, name, tabs, links */
+    --secondary: #4B5A8C;    /* dates, meta */
+    --tertiary: #F2D54A;
+    --content: #0E1636;
+    --code-bg: #FFF0A0;
+    --border: #E8C93A;
+    --panel: #FFF0A0;
+    --accent: #1450FF;
+    --sea-wash: linear-gradient(180deg, #FFE24A, #E0A800);
+
+    /* yellow sea is bright, so this one runs light: pale panels, dark text */
+    --glass-bg: rgba(255, 236, 120, .30);
+    --glass-bg-hover: rgba(255, 240, 150, .55);
+    --grain-opacity: .55;
+    --header-tint: rgba(255, 240, 160, .28);
+    --paper: rgba(255, 244, 190, .72);
+    --wave: var(--accent);
+}
+
+:root[data-scheme="fern-swap"] {
+    --theme: #2A0827;
+    --entry: #3D0C39;
+    --primary: #5BE08F;      /* green headings, name, tabs, links */
+    --secondary: #A8E6BF;    /* dates, meta */
+    --tertiary: #6A1A63;
+    --content: #F6DDF3;
+    --code-bg: #3D0C39;
+    --border: #6A1A63;
+    --panel: #3D0C39;
+    --accent: #3FCF7E;
+    --sea-wash: linear-gradient(180deg, #E046D8, #5A0F55);
+
+    --glass-bg: rgba(50, 6, 46, .34);
+    --glass-bg-hover: rgba(90, 16, 82, .5);
+    --grain-opacity: .4;
+    --header-tint: rgba(40, 4, 36, .3);
+    --paper: rgba(36, 5, 33, .68);
     --wave: var(--accent);
 }
 
@@ -291,8 +335,17 @@ body::before {
     background: linear-gradient(to top, rgba(0, 0, 0, .5), rgba(0, 0, 0, .2));
 }
 
+/* The light swapped scheme: blue titles on a pale yellow band instead. */
+:root[data-scheme="lightning-swap"] .tile-title { text-shadow: none; }
+:root[data-scheme="lightning-swap"] .tile-blur {
+    background: linear-gradient(to top, rgba(255, 240, 160, .8), rgba(255, 240, 160, .4));
+}
+
 .scheme-lightning { --sea-1: #2E7BFF; --sea-2: #0B2FA3; --bead: #FFD60A; }
 .scheme-fern { --sea-1: #3FBF78; --sea-2: #0E5034; --bead: #E046D8; }
+/* While swapped, the swatch shows the swapped colours. */
+:root[data-scheme="lightning-swap"] .scheme-lightning { --sea-1: #FFE24A; --sea-2: #E0A800; --bead: #1450FF; }
+:root[data-scheme="fern-swap"] .scheme-fern { --sea-1: #E046D8; --sea-2: #5A0F55; --bead: #3FCF7E; }
 
 .scheme-toggle:hover { transform: scale(1.12); }
 
@@ -344,6 +397,7 @@ body::before {
 .logo a { font-weight: 700; letter-spacing: -0.01em; }
 :root[data-theme="dark"] .logo a,
 :root[data-scheme] .logo a { text-shadow: 0 1px 14px rgba(0, 0, 0, .6), 0 1px 2px rgba(0, 0, 0, .45); }
+:root[data-scheme="lightning-swap"] .logo a { text-shadow: none; }
 #menu a { font-size: 17px; }
 
 .post-title {
