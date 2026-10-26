@@ -7,6 +7,7 @@ cover:
 ---
 What I was doing in July 2025. Skipping those with people (the best part).
 
+![](lehmkuhl_0.jpg)
 ![](lehmkuhl_1.jpg)
 ![](lehmkuhl_2.jpg)
 ![](lehmkuhl_3.jpg)
