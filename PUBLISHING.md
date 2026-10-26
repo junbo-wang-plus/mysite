@@ -46,4 +46,5 @@ run `./publish.sh clay-2`.
 
 Needs `git` with push access to the repo (SSH key by default; for HTTPS run
 `REPO=https://github.com/junbo-wang-plus/mysite.git ./publish.sh`).
-Use JPEG/PNG images, not HEIC. Wrap filenames with spaces in `<>`: `![](<IMG 1.jpg>)`.
+Use JPEG/PNG images, not HEIC. Full-size camera photos are fine: on every push, the deploy
+shrinks any photo over 2000px or 1.5 MB (`scripts/shrink-images.py`) and commits the smaller file. Wrap filenames with spaces in `<>`: `![](<IMG 1.jpg>)`.
