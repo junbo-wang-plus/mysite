@@ -8,4 +8,4 @@ cover:
 # in which i keep track of the tab between me and ana lucia de santos medina
 - (+) chips
 - (-) disgusting pizza
-- (+) 2 beers
+- (+) friendship
