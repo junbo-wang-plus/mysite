@@ -18,6 +18,7 @@ enableRobotsTXT = true
   ShowCodeCopyButtons = false
   ShowToc = false
   disableHLJS = true
+  mainSections = ["posts"]   # home grid shows posts only, not misc/
 
   [params.cover]
     linkFullImages = false
@@ -43,3 +44,8 @@ enableRobotsTXT = true
   name = "Instagram"
   url = "https://www.instagram.com/bread19000"
   weight = 4
+
+[[menu.main]]
+  name = "Misc"
+  url = "/misc/"
+  weight = 5

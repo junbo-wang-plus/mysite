@@ -1,0 +1,24 @@
+{{- /*
+  Yatzy score sheet (content/misc/yatzy.md, `layout = 'yatzy'`). The table is
+  drawn and kept by assets/js/yatzy.js; this file is only the frame.
+*/ -}}
+{{- define "main" }}
+<article class="post-single yz">
+  <header class="yz-head">
+    <h1 class="post-title">Yatzy</h1>
+    <div class="yz-bar">
+      <button type="button" data-act="add">+ Player</button>
+      <button type="button" data-act="undo" disabled>Undo</button>
+      <button type="button" data-act="new">New game</button>
+    </div>
+  </header>
+  <div class="yz-scroll">
+    <table class="yz-sheet"></table>
+  </div>
+  <p class="yz-status" aria-live="polite"></p>
+  <p class="yz-rules">Tap a box to log a score. Scandinavian rules: 50 bonus for 63 or more in the top half (three of each), small straight 1–5 is 15, large straight 2–6 is 20, Yatzy is 50. The sheet is kept in this browser until you start a new game.</p>
+  <noscript><p>The score sheet needs JavaScript.</p></noscript>
+</article>
+{{- $js := resources.Get "js/yatzy.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+{{- end }}{{- /* end main */ -}}

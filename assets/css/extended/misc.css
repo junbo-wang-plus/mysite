@@ -1,0 +1,339 @@
+/* Misc section: the list page (layouts/misc/list.html) and the Yatzy
+   score sheet (layouts/yatzy.html, assets/js/yatzy.js). */
+
+/* ---------- Misc list ---------- */
+.misc-list {
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.misc-list li { border-top: 1px solid var(--border); }
+.misc-list li:last-child { border-bottom: 1px solid var(--border); }
+
+.misc-list a {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 4px;
+    transition: background-color .25s ease;
+}
+
+.misc-list a:hover { background-color: var(--glass-bg-hover); }
+
+.misc-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--primary);
+}
+
+.misc-desc {
+    font-family: var(--font-read);
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--secondary);
+}
+
+/* ---------- Yatzy sheet ---------- */
+.yz-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 24px;
+    margin-bottom: 24px;
+}
+
+.yz-head .post-title { margin: 0; }
+
+.yz-bar { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.yz-bar button,
+.yz-pk-clear {
+    padding: 6px 14px;
+    border: 0;
+    border-radius: 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--primary);
+    background: var(--glass-bg);
+    cursor: pointer;
+    transition: background-color .25s ease;
+}
+
+.yz-bar button:hover:not(:disabled),
+.yz-pk-clear:hover { background: var(--glass-bg-hover); }
+.yz-bar button:disabled { opacity: .4; cursor: default; }
+
+/* The sheet sits on a solid card, like a score pad on the table; being
+   solid, it lets the category column stay put over scrolled columns. */
+.yz-scroll {
+    overflow-x: auto;
+    padding: 14px 14px 2px;    /* top: room for the turn bead and remove button */
+    background: var(--entry);
+}
+
+.yz-sheet {
+    display: table;     /* PaperMod makes tables blocks that scroll themselves */
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    font-family: var(--font-ui);
+    font-size: 15px;
+    color: var(--content);
+}
+
+.yz-sheet th,
+.yz-sheet td {
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* PaperMod draws its own table borders and row lines on post content. */
+.yz-sheet tr { border: 0; }
+
+.yz-sheet th.yz-cat {
+    width: 1%;
+    padding: 0 16px 0 0;
+    text-align: left;
+    white-space: nowrap;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+/* Category names stay put while a wide sheet scrolls sideways; the shadow
+   shows only when it is wide enough to scroll (.is-wide, set in yatzy.js). */
+.yz-sheet .yz-cat {
+    position: sticky;
+    left: -14px;
+    z-index: 1;
+    background: var(--entry);
+}
+
+.yz-scroll.is-wide .yz-cat { box-shadow: 6px 0 8px -6px rgba(0, 0, 0, .35); }
+
+.yz-sheet thead th { border-bottom: 2px solid var(--primary); }
+
+.yz-player {
+    position: relative;
+    min-width: 64px;
+    padding: 0 0 6px !important;
+}
+
+.yz-name {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 6px 4px 2px;
+    border: 0;
+    border-bottom: 1px dashed transparent;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary);
+    background: transparent;
+    text-overflow: ellipsis;
+}
+
+.yz-name:hover { border-bottom-color: var(--secondary); }
+.yz-name:focus { outline: 0; border-bottom-color: var(--accent); background: var(--glass-bg); }
+
+/* Next to play: a bead above the name. */
+.yz-player.is-turn::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+}
+
+.yz-remove {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: 0;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--secondary);
+    background: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.yz-player:hover .yz-remove,
+.yz-remove:focus-visible { opacity: 1; }
+.yz-remove:hover { color: var(--accent); }
+@media (hover: none) { .yz-remove { opacity: .6; } }
+
+.yz-cell {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--content);
+    background: transparent;
+    cursor: pointer;
+    transition: background-color .15s ease;
+}
+
+.yz-cell:hover,
+.yz-cell.is-open { background: var(--glass-bg-hover); }
+.yz-cell.is-open { box-shadow: inset 0 -2px 0 var(--accent); }
+.yz-cell:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.yz-cell.is-zero,
+.yz-sheet td.is-zero { color: var(--secondary); opacity: .7; }
+
+/* Derived rows: sum, bonus, total. */
+.yz-calc td,
+.yz-total td {
+    height: 34px;
+    font-family: var(--font-mono);
+    color: var(--primary);
+}
+
+.yz-calc .yz-cat,
+.yz-total .yz-cat {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400 !important;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--secondary) !important;
+}
+
+.yz-sum th,
+.yz-sum td { border-top: 2px solid var(--border); }
+
+.yz-sheet td.yz-par { font-size: 13px; color: var(--secondary); cursor: help; }
+.yz-sheet td.is-bonus { color: var(--accent); font-weight: 500; }
+
+.yz-sheet tbody + tbody tr:first-child th,
+.yz-sheet tbody + tbody tr:first-child td { border-top: 18px solid transparent; }
+
+.yz-sheet tfoot th,
+.yz-sheet tfoot td { border-top: 2px solid var(--primary); border-bottom: 0; }
+
+.yz-total td {
+    height: 44px;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.yz-sheet td.is-best { color: var(--accent); }
+
+.yz-status {
+    min-height: 1.5em;
+    margin: 18px 0 0;
+    font-family: var(--font-display);
+    font-size: 19px;
+    color: var(--primary);
+}
+
+.yz-rules {
+    margin: 10px 0 0;
+    font-family: var(--font-read);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--secondary);
+}
+
+.yz-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ---------- Score picker (appended to <body>) ---------- */
+.yz-picker {
+    position: fixed;
+    z-index: 200;
+    width: 300px;
+    padding: 12px;
+    color: var(--content);
+    background: var(--entry);
+    box-shadow: 0 18px 40px -16px rgba(0, 0, 0, .55), 0 0 0 1px var(--border);
+}
+
+.yz-picker[hidden] { display: none; }
+
+.yz-pk-head {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 10px;
+    line-height: 1.3;
+}
+
+.yz-pk-head strong { font-family: var(--font-display); font-size: 17px; color: var(--primary); }
+.yz-pk-head span { font-family: var(--font-mono); font-size: 12px; color: var(--secondary); }
+
+.yz-pk-vals {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+    gap: 4px;
+}
+
+.yz-pk-vals button {
+    height: 40px;
+    padding: 0;
+    border: 0;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    color: var(--primary);
+    background: var(--glass-bg-hover);
+    cursor: pointer;
+    transition: background-color .15s ease, color .15s ease;
+}
+
+.yz-pk-vals button:hover,
+.yz-pk-vals button:focus-visible { outline: 0; color: var(--theme); background: var(--accent); }
+.yz-pk-vals button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--accent); }
+
+.yz-pk-clear { width: 100%; margin-top: 8px; }
+
+/* Phones: a sheet along the bottom edge. */
+.yz-picker.is-sheet {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+}
+
+.yz-picker.is-sheet .yz-pk-vals button { height: 46px; }
+
+@media screen and (max-width: 600px) {
+    .yz-head { margin-bottom: 16px; }
+    .yz-sheet { font-size: 14px; }
+    .yz-sheet th.yz-cat { padding-right: 10px; }
+    .yz-scroll { margin: 0 -8px; padding: 12px 10px 2px; }
+    .yz-sheet .yz-cat { left: -10px; }
+    .yz-player { min-width: 54px; }
+    .yz-name { font-size: 15px; }
+    .yz-cell { height: 36px; font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .misc-list a,
+    .yz-cell,
+    .yz-remove,
+    .yz-pk-vals button { transition: none; }
+}

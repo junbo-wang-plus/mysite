@@ -1,0 +1,21 @@
+{{- /*
+  Misc section (content/misc/): a plain list of odd things on the site, each
+  a title and its front-matter `description`. Order by `weight`.
+*/ -}}
+{{- define "main" }}
+<article class="post-single misc">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+  <ul class="misc-list">
+    {{- range .Pages.ByWeight }}
+    <li>
+      <a href="{{ .RelPermalink }}">
+        <span class="misc-title">{{ .Title }}</span>
+        {{- with .Description }}<span class="misc-desc">{{ . }}</span>{{ end }}
+      </a>
+    </li>
+    {{- end }}
+  </ul>
+</article>
+{{- end }}{{- /* end main */ -}}
