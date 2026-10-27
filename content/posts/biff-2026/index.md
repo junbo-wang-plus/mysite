@@ -36,7 +36,7 @@ John Wilson tricked his producers to make this documentary about concrete and we
 
 # [Rose](https://letterboxd.com/film/rose-2026/)
 ![](rose.jpg)
-A German Mulan that is incredibly real and visceral.
+A brutal German Mulan.
 	
 # [Barbara Forever](https://letterboxd.com/film/barbara-forever/)
 ![](barbara.jpg)
