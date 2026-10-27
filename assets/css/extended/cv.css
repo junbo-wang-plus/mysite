@@ -24,6 +24,9 @@
 
 .cv-pdf:hover { background: var(--glass-bg-hover); }
 
+.cv-portrait { margin: 20px 0 0; }
+.cv-portrait img { display: block; width: 100%; height: auto; border-radius: 0; }
+
 .cv-section h2 {
     margin: 44px 0 18px;
     font-family: var(--font-display);
@@ -126,4 +129,5 @@
     .cv, .cv * { color: #111 !important; }
     .cv-when { color: #333 !important; }
     .cv-entry { break-inside: avoid; border-color: #ddd; }
+    .cv-portrait img { max-height: 8cm; width: auto; }
 }

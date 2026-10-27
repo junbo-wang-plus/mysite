@@ -2,6 +2,7 @@
 # Text fields accept Markdown.
 
 name: Junbo Wang
+portrait: /img/cv-portrait.jpg   # shown at the top of the page, before Education
 pdf: https://www.dropbox.com/scl/fi/p98r4pefq2setgxfhjt1a/CV.pdf?rlkey=8bn6sshdhi9acre3lm35u3248&dl=0
 
 education:

@@ -13,6 +13,12 @@
     {{- end }}
   </header>
 
+  {{- with $cv.portrait }}
+  <figure class="cv-portrait">
+    <img src="{{ . }}" alt="Portrait: a white goose standing on winter grass by a wooden fence and the sea" loading="eager">
+  </figure>
+  {{- end }}
+
   <section class="cv-section">
     <h2>Education</h2>
     {{- range $cv.education }}
