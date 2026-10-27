@@ -52,4 +52,4 @@ Overhyped bullshit. Here for Phoebe Bridgers and the cinematography.
 
 # [Silent Friend](https://letterboxd.com/film/silent-friend/)
 ![](silent_friend.jpg)
-Three stories about (mostly?) friendships taking place around a huge Gingko tree in Germany. The second story about the friendship between a weird guy and a pot of door-opening flower is cute. But in the end stories don't tie together at all. Was the Gingko tree looking for a friend this entire time?
+Three stories about (mostly?) friendships taking place around a huge Gingko tree in Germany. The second story about the friendship between a weird guy and a pot of door-opening flower is cute. But in the end the stories don't tie together at all. Was the Gingko tree looking for a friend this entire time?
