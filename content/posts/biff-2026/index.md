@@ -8,7 +8,7 @@ cover:
 
 # [All of a Sudden](https://letterboxd.com/film/all-of-a-sudden-2026/)
 ![](All_of_a_Sudden.jpg)
-Hamaguchi returns with his stage-play-disguised-as-a-film conversational epic. It's about the paradox of running a humane care home under capitalism. It's about unexpected friendships. It's about making a play (of course). It's about facing your mortality. It's about work life balance. It's about how we take care of each other. Halfway through the movie there is a half-hour long lecture about capitalism. It's 200 minutes of nonstop dialog. No doubt my favorite one at BIFF. But I knew that before I'd seen it.
+Hamaguchi returns with his stage-play-disguised-as-a-film conversational epic. It's about the paradox of running a humane care home under capitalism. It's about unexpected friendships. It's about making a play (of course). It's about facing your mortality. It's about work life balance. It's about how we take care of each other. Halfway through the movie there is a half-hour long lecture about capitalism. It's 200 minutes of nonstop dialog. No doubt my favorite one at BIFF. But I knew that before I went in.
 
 # [Once upon a time in Harlem](https://letterboxd.com/film/once-upon-a-time-in-harlem/)
 ![](once_upon.jpg)
