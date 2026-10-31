@@ -40,6 +40,23 @@ fan: ["Klara_and_the_Sun.png", "MachinesLikeMe.jpg"]   # files in the post folde
 ---
 ```
 
+Photo-dump posts (just a short intro and a lot of pictures) can use photo-grid mode:
+the pictures sit in a grid of squares on desktop and become a plain list of full-width
+photos on phones. Add one line to the front matter:
+
+```markdown
+---
+title: "One Photo a Week"
+date: 2026-11-01
+draft: false
+photogrid: true
+---
+A line of text, then the photos.
+
+![](1.jpg)
+![](2.jpg)
+```
+
 Run `./publish.sh`. Every post folder that doesn't exist on GitHub yet is pushed to `main`
 and the site rebuilds in about a minute. Existing folders are skipped; to push edits to one,
 run `./publish.sh clay-2`.

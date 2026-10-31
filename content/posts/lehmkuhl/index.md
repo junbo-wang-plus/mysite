@@ -2,6 +2,7 @@
 title: "The Month the Earth Stood Still (for me)"
 date: 2025-08-01
 draft: false
+photogrid: true
 cover:
   image: "lehmkuhl_1.jpg"
 ---

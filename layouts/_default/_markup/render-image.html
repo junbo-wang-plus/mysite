@@ -2,10 +2,12 @@
   Every Markdown image in a post sits whole inside a square frame,
   on a blurred copy of itself (styles: assets/css/extended/theme.css).
   Images with an empty destination (e.g. ![]() placeholders) render nothing.
+  In posts with `photogrid: true` the frames also get the "pg" class, which lays
+  them out as a grid on desktop and a plain list of photos on phones.
 */ -}}
 {{- with .Destination -}}
 {{- $src := . | safeURL -}}
-<figure class="sq">
+<figure class="sq{{ if $.Page.Params.photogrid }} pg{{ end }}">
   <img class="sq-bg" src="{{ $src }}" alt="" aria-hidden="true" loading="lazy" decoding="async">
   <img class="sq-fg" src="{{ $src }}" alt="{{ $.Text }}" loading="lazy" decoding="async">
   {{- with $.Text }}

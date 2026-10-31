@@ -521,6 +521,60 @@ body::before {
     background: linear-gradient(to top, rgba(0, 0, 0, .45), transparent);
 }
 
+/* ---------- Photo-grid posts (front matter `photogrid: true`) ----------
+   The post's images (figure.sq.pg, see render-image.html) become a grid of
+   square frames on desktop, on a wider page. Anything else in the post (intro
+   text, a line between photos) spans the full row. On phones it's a plain
+   list of full-width photos at their own aspect ratio. */
+.main:has(figure.pg) {
+    max-width: calc(1032px + 96px + var(--gap) * 2);
+}
+
+.md-content:has(> figure.pg) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+
+.md-content:has(> figure.pg) > :not(figure.pg) {
+    grid-column: 1 / -1;
+    max-width: var(--main-width);
+}
+
+/* Photos on consecutive lines share one Markdown paragraph; the browser
+   leaves an empty <p> behind it. */
+.md-content:has(> figure.pg) > p:empty { display: none; }
+
+.md-content figure.sq.pg {
+    max-width: none;
+    margin: 0;
+}
+
+.md-content figure.sq.pg .sq-fg { padding: 6%; }
+
+@media screen and (max-width: 960px) {
+    .md-content:has(> figure.pg) { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (max-width: 760px) {
+    .md-content:has(> figure.pg) { display: block; }
+    .md-content figure.sq.pg {
+        aspect-ratio: auto;
+        margin: 0 0 16px;
+        background: none;
+    }
+    .md-content figure.sq.pg .sq-bg { display: none; }
+    .md-content figure.sq.pg .sq-fg {
+        position: static;
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        filter: none;
+    }
+}
+
 /* ---------- Tilted cover pair at the top of a post (front matter `fan:`) ---------- */
 .cover-fan {
     display: flex;

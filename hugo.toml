@@ -2,6 +2,7 @@ baseURL = "https://junbowang.com"
 title = "Junbo Wang"
 theme = "PaperMod"
 enableRobotsTXT = true
+buildFuture = true   # publish posts dated later today/tomorrow too (the build runs on UTC)
 
 [pagination]
   pagerSize = 12
