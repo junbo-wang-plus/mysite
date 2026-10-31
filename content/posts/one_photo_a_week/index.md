@@ -1,6 +1,6 @@
 ---
 title: "One Photo a Week"
-date: 2025-11-01
+date: 2026-11-01
 draft: false
 cover:
   image: "1.jpg"
