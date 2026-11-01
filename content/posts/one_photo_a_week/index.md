@@ -6,7 +6,7 @@ photogrid: true
 cover:
   image: "1.jpg"
 ---
-Is one photo a week an appropriate frequency so I actually bother to update?
+Will I actually bother to update this time?
 
 ![](1.jpg)
 ![](2.jpg)
