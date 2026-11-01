@@ -1,6 +1,6 @@
 ---
 title: "Extremely Exclusive Film Club"
-date: 2026-10-30
+date: 2026-11-01
 draft: false
 cover:
   image: "logo.JPG"  # still used for link previews
@@ -16,8 +16,9 @@ cover:
 
 **Where**: Henrik Wergelands gate 24A
 
-# [偶然と想像](https://letterboxd.com/film/wheel-of-fortune-and-fantasy/)
-![](wheel-of-fortune-and-fantasy.jpg)
+> I picked this one because it’s October and I love it. — Lucia
+
+# [La vita è bella](https://letterboxd.com/film/life-is-beautiful/)
 
 **When**: TBD
 
