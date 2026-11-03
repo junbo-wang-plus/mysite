@@ -15,3 +15,5 @@ What I was doing in July 2025. Skipping those with people (the best part).
 ![](lehmkuhl_4.jpg)
 ![](lehmkuhl_5.jpg)
 ![](lehmkuhl_6.jpg)
+
+I miss you all.
