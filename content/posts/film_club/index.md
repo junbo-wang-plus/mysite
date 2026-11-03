@@ -19,6 +19,7 @@ cover:
 > I picked this one because it’s October and I love it. — Lucia
 
 # [La vita è bella](https://letterboxd.com/film/life-is-beautiful/)
+![](life-is-beautiful.jpg)
 
 **When**: TBD
 
