@@ -47,6 +47,16 @@ buildFuture = true   # publish posts dated later today/tomorrow too (the build r
   weight = 4
 
 [[menu.main]]
+  name = "Letterboxd"
+  url = "https://boxd.it/7UBwp"
+  weight = 5
+
+[[menu.main]]
+  name = "Goodreads"
+  url = "https://www.goodreads.com/user/show/182722281"
+  weight = 6
+
+[[menu.main]]
   name = "Misc"
   url = "/misc/"
-  weight = 5
+  weight = 7
