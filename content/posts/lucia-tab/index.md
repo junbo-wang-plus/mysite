@@ -1,6 +1,6 @@
 ---
 title: "Lucia's Tab"
-date: 2026-10-25
+date: 2026-11-14
 draft: false
 cover:
   image: "takis.jpg"
@@ -9,3 +9,4 @@ cover:
 - (+) chips
 - (-) disgusting pizza
 - (+) friendship
+- (-) beer
