@@ -1,6 +1,6 @@
 ---
 title: "One Photo a Week"
-date: 2026-11-01
+date: 2026-11-15
 draft: false
 photogrid: true
 cover:
@@ -52,3 +52,5 @@ Will I actually bother to update this time?
 ![](42.jpg)
 ![](43.jpg)
 ![](44.jpg)
+![](45.jpeg)
+![](46.jpeg)
