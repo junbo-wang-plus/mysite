@@ -16,7 +16,7 @@ cover:
 
 **Where**: J's
 
-> I picked this one because it’s October and I love it. — Lucia
+> I picked this one because it’s October and I love it. -- Lucia
 
 # [La vita è bella](https://letterboxd.com/film/life-is-beautiful/)
 ![](life-is-beautiful.jpg)
@@ -25,7 +25,7 @@ cover:
 
 **Where**: Lucia's
 
-> I chose this movie just to remind us that life is beautiful - Giacomo
+> I chose this movie just to remind us that life is beautiful -- Giacomo
 
 # [City of God](https://letterboxd.com/film/city-of-god/)
 ![](city-of-god.jpg)
