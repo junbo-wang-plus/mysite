@@ -14,13 +14,22 @@ cover:
 
 **When**: Nov. 1st, 2026 kl.19
 
-**Where**: Henrik Wergelands gate 24A
+**Where**: J's
 
 > I picked this one because it’s October and I love it. — Lucia
 
 # [La vita è bella](https://letterboxd.com/film/life-is-beautiful/)
 ![](life-is-beautiful.jpg)
 
-**When**: TBD
+**When**: Nov. 14th, 2026 kl.21
 
-**Where**: TBD
+**Where**: Lucia's
+
+> I chose this movie just to remind us that life is beautiful - Giacomo
+
+# [City of God](https://letterboxd.com/film/city-of-god/)
+![](city-of-god.jpg)
+
+**When**: TBD
+**Where**: J's
+
