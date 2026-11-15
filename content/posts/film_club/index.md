@@ -1,6 +1,6 @@
 ---
 title: "Extremely Exclusive Film Club"
-date: 2026-11-01
+date: 2026-11-15
 draft: false
 cover:
   image: "logo.JPG"  # still used for link previews
