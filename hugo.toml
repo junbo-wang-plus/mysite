@@ -57,6 +57,11 @@ buildFuture = true   # publish posts dated later today/tomorrow too (the build r
   weight = 6
 
 [[menu.main]]
+  name = "StoryGraph"
+  url = "https://app.thestorygraph.com/profile/bread19"
+  weight = 7
+
+[[menu.main]]
   name = "Misc"
   url = "/misc/"
-  weight = 7
+  weight = 8
