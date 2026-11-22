@@ -1,6 +1,6 @@
 ---
 title: "One Photo a Week"
-date: 2026-11-15
+date: 2026-11-22
 draft: false
 photogrid: true
 cover:
