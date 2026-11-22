@@ -5,7 +5,6 @@ draft: false
 cover:
   image: "passion.jpg"  # still used for link previews
   fan: false  # grid thumbnail = the fan below
-fan: ["All_of_a_Sudden.jpg", "thedispossessed.jpg"]
 ---
 # [Passion](https://letterboxd.com/film/passion-2008/)
 ![](passion.jpg)
