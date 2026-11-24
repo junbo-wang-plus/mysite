@@ -30,6 +30,6 @@ cover:
 # [City of God](https://letterboxd.com/film/city-of-god/)
 ![](city-of-god.jpg)
 
-**When**: TBD
+**When**: Nov. 29th, 2026 kl.19
 **Where**: J's
 
